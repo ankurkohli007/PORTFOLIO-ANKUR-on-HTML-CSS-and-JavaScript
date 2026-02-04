@@ -26,24 +26,60 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
         <div>
-            <a href="./index.html"><span class="logo">ROBOTICS ENGINEER</span></a>
+            <a href="./index.html"><span class="logo">SOFTWARE ENGINEER</span></a>
         </div>
-        
-    <div class="nav-links">
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About Me</a></li>
-            <li><a href="#career-identity">Career Identity</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#publications">Publications</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </div>
-       
+
+        <div class="nav-links">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#career-identity">Career Identity</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <!-- setlang button -->>
+                <li class="lang-switch lang-dropdown">
+                    <div id="google_translate_element"></div>
+
+                    <button class="lang-current" type="button" aria-haspopup="true" aria-expanded="false">
+                        🌐
+                    </button>
+
+                    <ul class="lang-menu">
+                        <li>
+                            <button type="button" onclick="setLang('en')" data-tooltip="English" tooltip-right
+                                small-tooltip>🇬🇧
+                                English</button>
+                        </li>
+                        <li>
+                            <button type="button" onclick="setLang('it')" data-tooltip="Italiano" tooltip-right
+                                small-tooltip>🇮🇹
+                                Italiano</button>
+                        </li>
+                        <li>
+                            <button type="button" onclick="setLang('de')" data-tooltip="Deutsch" tooltip-right
+                                small-tooltip>🇩🇪
+                                Deutsch</button>
+                        </li>
+                        <li>
+                            <button type="button" onclick="setLang('nl')" data-tooltip="Nederlands" tooltip-right
+                                small-tooltip>🇳🇱
+                                Nederlands</button>
+                        </li>
+                        <li>
+                            <button type="button" onclick="setLang('fr')" data-tooltip="Français" tooltip-right
+                                small-tooltip>🇫🇷
+                                Français</button>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
 
     </header>
 
-    
+
 
     <main>
         <!-- Projects Section -->
@@ -57,13 +93,16 @@
                     </div>
                     <div class="projects-card-box__desc">
                         <h4>ResumeAI: Next-Gen Career Intelligence Platform</h4>
-                        <p align="justify">An AI assisted resume analysis platform built with React.js, Tailwind CSS, and Puter.js, designed to provide cost efficient ATS style insights. The platform performs semantic resume job description matching, highlights skill gaps, and generates actionable improvement suggestions through GenAI integration, with a strong focus on accessibility for individuals and smaller teams.
+                        <p align="justify">An AI assisted resume analysis platform built with React.js, Tailwind CSS,
+                            and Puter.js, designed to provide cost efficient ATS style insights. The platform performs
+                            semantic resume job description matching, highlights skill gaps, and generates actionable
+                            improvement suggestions through GenAI integration, with a strong focus on accessibility for
+                            individuals and smaller teams.
                         </p>
                     </div>
                     <div class="projects-card-box__buttons">
                         <button class="btn btn-dark-outlined" title="View Project" tooltip-bottom>
-                            <a target="_blank"
-                                href="https://ankurkohli007.github.io/resumeai-platform/">View
+                            <a target="_blank" href="https://ankurkohli007.github.io/resumeai-platform/">View
                                 Project <i class="fa-solid fa-external-link"></i></a>
                         </button>
                     </div>
@@ -75,12 +114,16 @@
                     </div>
                     <div class="projects-card-box__desc">
                         <h4>SkyScope: Live Weather Dashboard with API Integration</h4>
-                        <p align="justify">A fully interactive weather platform that delivers real-time forecasts, AQI metrics, and dynamic visual effects based on live conditions. Developed using JavaScript, Bootstrap, and Canvas animations, the app adapts its UI to weather and time of day, creating an engaging and responsive user experience.
+                        <p align="justify">A fully interactive weather platform that delivers real-time forecasts, AQI
+                            metrics, and dynamic visual effects based on live conditions. Developed using JavaScript,
+                            Bootstrap, and Canvas animations, the app adapts its UI to weather and time of day, creating
+                            an engaging and responsive user experience.
                         </p>
                     </div>
                     <div class="projects-card-box__buttons">
                         <button class="btn btn-dark-outlined" title="View Project" tooltip-bottom>
-                            <a target="_blank" href="https://ankurkohli007.github.io/SkyScope-WeatherApp-JS_RESTFul-API/">View
+                            <a target="_blank"
+                                href="https://ankurkohli007.github.io/SkyScope-WeatherApp-JS_RESTFul-API/">View
                                 Project <i class="fa-solid fa-external-link"></i></a>
                         </button>
                     </div>
@@ -92,7 +135,9 @@
                     </div>
                     <div class="projects-card-box__desc">
                         <h4>Interactive Game using JavaScript</h4>
-                        <p align="justify">A lightweight, browser-based Rock-Paper-Scissors game built using plain HTML, CSS, and JavaScript. The project focuses on simple UI, clean structure, and beginner-friendly logic that clearly demonstrates DOM manipulation and event handling.
+                        <p align="justify">A lightweight, browser-based Rock-Paper-Scissors game built using plain HTML,
+                            CSS, and JavaScript. The project focuses on simple UI, clean structure, and
+                            beginner-friendly logic that clearly demonstrates DOM manipulation and event handling.
                         </p>
                     </div>
                     <div class="projects-card-box__buttons">
@@ -102,20 +147,22 @@
                         </button>
                     </div>
                 </div>
-                
+
                 <div class="projects-card-box">
                     <div class="projects-card-box__icons">
                         <i class="fa-solid fa-utensils"></i>
                     </div>
                     <div class="projects-card-box__desc">
                         <h4>Responsive Website Design</h4>
-                        <p align="justify">A Restaurant website developed using HTML, CSS, and some minor functions in JavaScript, demonstrating front-end development skills and basic web design principles.
+                        <p align="justify">A Restaurant website developed using HTML, CSS, and some minor functions in
+                            JavaScript, demonstrating front-end development skills and basic web design principles.
                         </p>
                     </div>
                     <div class="projects-card-box__buttons">
                         <button class="btn btn-dark-outlined">
-                            <a target="_blank" href="https://ankurkohli007.github.io/Responsive-Website-Design-HTML-CSS-JS/">View Project <i
-                                    class="fa-solid fa-external-link"></i></a>
+                            <a target="_blank"
+                                href="https://ankurkohli007.github.io/Responsive-Website-Design-HTML-CSS-JS/">View
+                                Project <i class="fa-solid fa-external-link"></i></a>
                         </button>
                     </div>
                 </div>
@@ -126,16 +173,18 @@
                     </div>
                     <div class="projects-card-box__desc">
                         <h4>3D reconstruction</h4>
-                        <p align="justify">To developed immersive virtual reality experiences of robotics by capturing and converting real-world objects or environments into detailed 3D models.
+                        <p align="justify">To developed immersive virtual reality experiences of robotics by capturing
+                            and converting real-world objects or environments into detailed 3D models.
                         </p>
                     </div>
                     <div class="projects-card-box__buttons">
                         <button class="btn btn-dark-outlined">
-                            <a target="_blank" href="https://youtu.be/3dDWKMFSGl0?si=kdKeFMuSSkVejtp-"
-                                >View Project on YouTube <i class="fa-solid fa-external-link"></i></a>
-                                <br>
-                            <a target="_blank" href="https://github.com/ankurkohli007/Photogrammetry-and-3D-Model-Reconstruction_Virtual-Reality-for-Robotics.git"
-                                >View Project on GitHub <i class="fa-solid fa-external-link"></i></a>
+                            <a target="_blank" href="https://youtu.be/3dDWKMFSGl0?si=kdKeFMuSSkVejtp-">View Project on
+                                YouTube <i class="fa-solid fa-external-link"></i></a>
+                            <br>
+                            <a target="_blank"
+                                href="https://github.com/ankurkohli007/Photogrammetry-and-3D-Model-Reconstruction_Virtual-Reality-for-Robotics.git">View
+                                Project on GitHub <i class="fa-solid fa-external-link"></i></a>
                         </button>
                     </div>
 
@@ -147,7 +196,9 @@
                     </div>
                     <div class="projects-card-box__desc">
                         <h4>Cervical Cancer Detection using CNN & VGG16 Module</h4>
-                        <p align="justify">This work is based on Cervical cancer detection using CNNs involves leveraging deep learning models like VGG16 to classify cervical cancer in medical images, such as Pap smear slides, due to its proven effectiveness in image recognition tasks.
+                        <p align="justify">This work is based on Cervical cancer detection using CNNs involves
+                            leveraging deep learning models like VGG16 to classify cervical cancer in medical images,
+                            such as Pap smear slides, due to its proven effectiveness in image recognition tasks.
                         </p>
                     </div>
                     <div class="projects-card-box__buttons">
@@ -164,7 +215,10 @@
                     </div>
                     <div class="projects-card-box__desc">
                         <h4>Software Architecture for Mobile Robot Control</h4>
-                        <p align="justify">This project involves developing a software archi- tecture for controlling a mobile robot by applying graph-based routing and Dijkstra’s. It is based on using ROS, Gazebo, and RViz to control the robot. Also, it consists of writing ROS nodes in Python: a controller for the robot and a UI.
+                        <p align="justify">This project involves developing a software archi- tecture for controlling a
+                            mobile robot by applying graph-based routing and Dijkstra’s. It is based on using ROS,
+                            Gazebo, and RViz to control the robot. Also, it consists of writing ROS nodes in Python: a
+                            controller for the robot and a UI.
                         </p>
                     </div>
                     <div class="projects-card-box__buttons">
@@ -181,7 +235,10 @@
                     </div>
                     <div class="projects-card-box__desc">
                         <h4>Reinforcement Learning using A2C Algorithm & PPO Algorithm for Lunar Lander</h4>
-                        <p align="justify">Implemented solutions for the Lunar Lander problem using Advantage Actor-Critic (A2C) and Proximal Policy Optimization (PPO) algorithms within the framework of Reinforcement Learning, focusing on optimizing policy by implementing policy iteration approaches and value functions for efficient and robust lander control.
+                        <p align="justify">Implemented solutions for the Lunar Lander problem using Advantage
+                            Actor-Critic (A2C) and Proximal Policy Optimization (PPO) algorithms within the framework of
+                            Reinforcement Learning, focusing on optimizing policy by implementing policy iteration
+                            approaches and value functions for efficient and robust lander control.
                         </p>
                     </div>
                     <div class="projects-card-box__buttons">
@@ -200,7 +257,9 @@
                     </div>
                     <div class="projects-card-box__desc">
                         <h4>Convolutional Neural Networks (CNNs) to Process an Image - PyTorch</h4>
-                        <p align="justify">Implemented Convolutional Neural Networks (CNNs) in a Jupyter Notebook using PyTorch to process and analyze image data efficiently, leveraging advanced deep learning techniques.
+                        <p align="justify">Implemented Convolutional Neural Networks (CNNs) in a Jupyter Notebook using
+                            PyTorch to process and analyze image data efficiently, leveraging advanced deep learning
+                            techniques.
                         </p>
                     </div>
                     <div class="projects-card-box__buttons">
@@ -218,7 +277,10 @@
                     </div>
                     <div class="projects-card-box__desc">
                         <h4>AI Planning</h4>
-                        <p align="justify">This project implements an AI planning warehouse system leveraging priority queues, plan graphs, and a greedy best-first search algorithm to optimize order management, enhance storage capacity, and improve efficiency via advanced inventory algorithms and real-time data analytics.
+                        <p align="justify">This project implements an AI planning warehouse system leveraging priority
+                            queues, plan graphs, and a greedy best-first search algorithm to optimize order management,
+                            enhance storage capacity, and improve efficiency via advanced inventory algorithms and
+                            real-time data analytics.
                         </p>
                     </div>
                     <div class="projects-card-box__buttons">
@@ -236,7 +298,8 @@
                     </div>
                     <div class="projects-card-box__desc">
                         <h4>Implementation of Keepout Zones on a NAV2 Navigation System</h4>
-                        <p align="justify">This work is about the implementation of Keepout Zone using NAV2 packages. Also, this is implemented on ROS2, NAV2, Webots world, and so on.
+                        <p align="justify">This work is about the implementation of Keepout Zone using NAV2 packages.
+                            Also, this is implemented on ROS2, NAV2, Webots world, and so on.
                         </p>
                     </div>
                     <div class="projects-card-box__buttons">
@@ -254,7 +317,8 @@
                     </div>
                     <div class="projects-card-box__desc">
                         <h4>Smart Book Store Ontology</h4>
-                        <p align="justify">The work is based on Ontology which involves the topic in Ambient Intelligence (AmI). This will deals with Ambient Intelligence application.          
+                        <p align="justify">The work is based on Ontology which involves the topic in Ambient
+                            Intelligence (AmI). This will deals with Ambient Intelligence application.
                         </p>
                     </div>
                     <div class="projects-card-box__buttons">
@@ -272,7 +336,9 @@
                     </div>
                     <div class="projects-card-box__desc">
                         <h4>Adaptive Autonomous Surveillance Robot for Indoor Environments with Energy Management</h4>
-                        <p align="justify">This project aims to develop an adaptive autonomous surveillance robot designed for indoor environments, incorporating advanced energy management systems to enhance operational efficiency and autonomy.         
+                        <p align="justify">This project aims to develop an adaptive autonomous surveillance robot
+                            designed for indoor environments, incorporating advanced energy management systems to
+                            enhance operational efficiency and autonomy.
                         </p>
                     </div>
                     <div class="projects-card-box__buttons">
@@ -289,8 +355,11 @@
                         <i class="fas fa-bug"></i>
                     </div>
                     <div class="projects-card-box__desc">
-                        <h4>Integration of Autonomous Surveillance Robot Architecture with Robotic Simulation for Indoor Environment Mapping and Patrolling</h4>
-                        <p align="justify">This work integrates an autonomous surveillance robot, demonstrating semantic mapping and navigation using graph-based routing (Dijkstra’s & A*), OpenCV ROS, and SLAM, implemented with data structures and algorithms in C++ and Python.         
+                        <h4>Integration of Autonomous Surveillance Robot Architecture with Robotic Simulation for Indoor
+                            Environment Mapping and Patrolling</h4>
+                        <p align="justify">This work integrates an autonomous surveillance robot, demonstrating semantic
+                            mapping and navigation using graph-based routing (Dijkstra’s & A*), OpenCV ROS, and SLAM,
+                            implemented with data structures and algorithms in C++ and Python.
                         </p>
                     </div>
                     <div class="projects-card-box__buttons">
@@ -304,38 +373,40 @@
 
             </div>
         </section>
-        
+
 
 
     </main>
 
     <!-- Contact Section -->
-<section class="contact-section" id="contact">
-    <h2>Contact <span>ME!</span></h2>
+    <section class="contact-section" id="contact">
+        <h2>Contact <span>ME!</span></h2>
 
-    <div class="contact-container">
-        <!-- LinkedIn -->
-        <a class="contact-btn" target="_blank" href="https://www.linkedin.com/in/ankur-kohli-7a5865157/">
-            <i class="fa-brands fa-linkedin"></i> LinkedIn
-        </a>
+        <div class="contact-container">
+            <!-- LinkedIn -->
+            <a class="contact-btn" target="_blank" href="https://www.linkedin.com/in/ankur-kohli-7a5865157/">
+                <i class="fa-brands fa-linkedin"></i> LinkedIn
+            </a>
 
-        <!-- Gmail -->
-        <a class="contact-btn" target="_blank" href="mailto:ankurkohli1997007@gmail.com?subject=To book an appointment for the interview.&body=Hello, I'm interested in your profile %26 I would like to discuss more about your background and skills!">
-            <i class="fa-solid fa-envelope"></i> Gmail
-        </a>
+            <!-- Gmail -->
+            <a class="contact-btn" target="_blank"
+                href="mailto:ankurkohli1997007@gmail.com?subject=To book an appointment for the interview.&body=Hello, I'm interested in your profile %26 I would like to discuss more about your background and skills!">
+                <i class="fa-solid fa-envelope"></i> Gmail
+            </a>
 
-        <!-- Phone -->
-        <a class="contact-btn" href="tel:+39 3452 355 116">
-            <i class="fa-solid fa-phone"></i> Phone
-        </a>
-    </div>
-</section>
+            <!-- Phone -->
+            <a class="contact-btn" href="tel:+39 3452 355 116">
+                <i class="fa-solid fa-phone"></i> Phone
+            </a>
+        </div>
+    </section>
 
 
     </main>
 
     <footer>
-        <p>Copyright &copy; 2025 - <a href="https://github.com/ankurkohli007" target="_blank">Ankur Kohli</a> - All Rights
+        <p>Copyright &copy; 2025 - <a href="https://github.com/ankurkohli007" target="_blank">Ankur Kohli</a> - All
+            Rights
             Reserved.</p>
         <div class="footer-buttons">
             <button data-theme="./css/style1.css" class="footer__theme1 active-theme">Style 1</button>
@@ -344,9 +415,19 @@
 
     </footer>
 
-    
-        <!-- JS -->
-        <script src="./js/script.js"></script>
+
+    <!-- JS -->
+    <script src="./js/script.js"></script>
+    <!-- setlang -->
+    <script>
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                { pageLanguage: "en", includedLanguages: "en,it,de,nl,fr", autoDisplay: false },
+                "google_translate_element"
+            );
+        }
+    </script>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 
