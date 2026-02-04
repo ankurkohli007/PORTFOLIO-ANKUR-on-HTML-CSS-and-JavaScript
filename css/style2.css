@@ -690,8 +690,38 @@ body {
   font-weight: 600;
   z-index: 999999;
 }
+/* ===== TOOLTIP RIGHT (LANG MENU ONLY) ===== */
+.lang-switch .lang-menu button[data-tooltip] {
+  position: relative;
+}
 
+/* right tooltip box */
+.lang-switch .lang-menu button[data-tooltip][tooltip-right]::after {
+  left: calc(100% + 10px);
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%);
+}
 
+/* right tooltip arrow */
+.lang-switch .lang-menu button[data-tooltip][tooltip-right]::before {
+  left: calc(100% + 2px);
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%);
+  border-color: transparent var(--primary) transparent transparent;
+}
+
+/* small tooltip (LANG MENU ONLY) */
+.lang-switch .lang-menu button[small-tooltip][data-tooltip]::after {
+  padding: 3px 6px !important;
+  font-size: 10px !important;
+  line-height: 1.2 !important;
+  border-radius: 3px !important;
+}
+.lang-switch .lang-menu button[small-tooltip][data-tooltip]::before {
+  border-width: 4px !important;
+}
 
 
 /* Card Icon */
