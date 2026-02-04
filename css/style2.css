@@ -624,6 +624,74 @@ body {
   min-height: 100vh;
 }
 
+/* ===== LANGUAGE DROPDOWN ===== */
+
+.lang-dropdown {
+  position: relative;
+}
+
+.lang-current {
+  background: transparent;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.lang-menu {
+  position: absolute;
+  top: 140%;
+  right: 0;
+  background: #111;
+  border-radius: 6px;
+  padding: 0.25rem 0;
+  list-style: none;
+  min-width: 160px;
+  display: none;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  z-index: 999;
+}
+
+.lang-menu li button {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: #fff;
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  cursor: pointer;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.lang-menu li button:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+/* Show dropdown on hover (desktop) */
+.lang-dropdown:hover .lang-menu {
+  display: block;
+}
+
+/* Mobile-friendly click opening */
+.lang-dropdown.open .lang-menu {
+  display: block;
+}
+/* ===== Language switching overlay (smooth UX) ===== */
+.lang-loading::before {
+  content: "Translating…";
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(0,0,0,0.35);
+  color: #fff;
+  font-weight: 600;
+  z-index: 999999;
+}
+
+
 
 
 /* Card Icon */

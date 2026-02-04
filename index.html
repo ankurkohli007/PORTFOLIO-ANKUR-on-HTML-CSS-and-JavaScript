@@ -41,22 +41,37 @@
                 <li><a href="#projects" title="Projects" tooltip-bottom small-tooltip>Projects</a></li>
                 <li><a href="#publications" title="Publications" tooltip-bottom small-tooltip>Publications</a></li>
                 <li><a href="#contact" title="Contact" tooltip-bottom small-tooltip>Contact</a></li>
-                <!-- setlan button -->>
-                <li class="lang-switch">
+                <!-- setlang button -->>
+                <li class="lang-switch lang-dropdown">
                     <div id="google_translate_element"></div>
 
-                    <button type="button" onclick="setLang('en')" class="flag" data-tooltip="English" tooltip-top
-                        small-tooltip>
-                        🇬🇧
+                    <button class="lang-current" type="button" aria-haspopup="true" aria-expanded="false">
+                        🌐
                     </button>
 
-                    <button type="button" onclick="setLang('it')" class="flag" data-tooltip="Italiano" tooltip-top
-                        small-tooltip>
-                        🇮🇹
-                    </button>
+                    <ul class="lang-menu">
+                        <li>
+                            <button type="button" onclick="setLang('en')" data-tooltip="English" tooltip-right>🇬🇧
+                                English</button>
+                        </li>
+                        <li>
+                            <button type="button" onclick="setLang('it')" data-tooltip="Italiano" tooltip-right>🇮🇹
+                                Italiano</button>
+                        </li>
+                        <li>
+                            <button type="button" onclick="setLang('de')" data-tooltip="Deutsch" tooltip-right>🇩🇪
+                                Deutsch</button>
+                        </li>
+                        <li>
+                            <button type="button" onclick="setLang('nl')" data-tooltip="Nederlands" tooltip-right>🇳🇱
+                                Nederlands</button>
+                        </li>
+                        <li>
+                            <button type="button" onclick="setLang('fr')" data-tooltip="Français" tooltip-right>🇫🇷
+                                Français</button>
+                        </li>
+                    </ul>
                 </li>
-
-            </ul>
         </div>
 
     </header>
@@ -695,7 +710,7 @@
     <script>
         function googleTranslateElementInit() {
             new google.translate.TranslateElement(
-                { pageLanguage: "en", includedLanguages: "en,it", autoDisplay: false },
+                { pageLanguage: "en", includedLanguages: "en,it,de,nl,fr", autoDisplay: false },
                 "google_translate_element"
             );
         }
