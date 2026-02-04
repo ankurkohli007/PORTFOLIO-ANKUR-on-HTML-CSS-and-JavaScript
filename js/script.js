@@ -21,6 +21,21 @@ document.addEventListener("DOMContentLoaded", function () {
       navLinks.classList.toggle("show");
     });
   }
+
+  // ✅ Extra cleanup: remove any injected banner iframe if it appears later
+  const killBanner = () => {
+    const frames = document.querySelectorAll(
+      ".goog-te-banner-frame, iframe.goog-te-banner-frame"
+    );
+    frames.forEach((f) => f.remove());
+
+    document.body.style.top = "0px";
+    document.documentElement.style.top = "0px";
+  };
+
+  killBanner();
+  setTimeout(killBanner, 500);
+  setTimeout(killBanner, 1500);
 });
 
 function getBasePath() {

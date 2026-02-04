@@ -41,12 +41,21 @@
                 <li><a href="#projects" title="Projects" tooltip-bottom small-tooltip>Projects</a></li>
                 <li><a href="#publications" title="Publications" tooltip-bottom small-tooltip>Publications</a></li>
                 <li><a href="#contact" title="Contact" tooltip-bottom small-tooltip>Contact</a></li>
+                <!-- setlan button -->>
                 <li class="lang-switch">
                     <div id="google_translate_element"></div>
-                    <button type="button" onclick="setLang('en')" class="flag">🇬🇧</button>
-                    <button type="button" onclick="setLang('it')" class="flag">🇮🇹</button>
 
+                    <button type="button" onclick="setLang('en')" class="flag" data-tooltip="English" tooltip-top
+                        small-tooltip>
+                        🇬🇧
+                    </button>
+
+                    <button type="button" onclick="setLang('it')" class="flag" data-tooltip="Italiano" tooltip-top
+                        small-tooltip>
+                        🇮🇹
+                    </button>
                 </li>
+
             </ul>
         </div>
 
@@ -685,14 +694,14 @@
     <!-- setlang -->
     <script>
         function googleTranslateElementInit() {
-          new google.translate.TranslateElement(
-            { pageLanguage: "en", includedLanguages: "en,it", autoDisplay: false },
-            "google_translate_element"
-          );
+            new google.translate.TranslateElement(
+                { pageLanguage: "en", includedLanguages: "en,it", autoDisplay: false },
+                "google_translate_element"
+            );
         }
-      </script>
-      <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-                  
+    </script>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 
 </body>
 
