@@ -550,6 +550,44 @@ section.career-section {
     opacity: 1;
 }
 
+/* LANG SWITCH */
+.lang-switch {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  margin-left: 2rem;
+}
+
+.lang-switch .flag {
+  font-size: 1.3rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: transform 0.2s;
+  line-height: 1;
+}
+
+.lang-switch .flag:hover { transform: scale(1.2); }
+
+/* Hide Google top banner */
+.goog-te-banner-frame.skiptranslate { display: none !important; }
+body { top: 0 !important; }
+
+/* Keep widget alive but off-screen */
+#google_translate_element {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+}
+
+#google_translate_element .goog-logo-link { display: none !important; }
+#google_translate_element .goog-te-combo { position: absolute; left: -9999px; }
+.lang-loading {
+  cursor: progress;
+  opacity: 0.7;
+}
+
+
 /* Card Icon */
 .certification-card__icon {
     width: 56px;

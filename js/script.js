@@ -9,10 +9,44 @@ document.addEventListener("click", function (event) {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
+  // Apply saved language on load (default English)
+  const saved = localStorage.getItem("lang") || "en";
+  setGoogTransCookie(saved);
+
   const menuToggle = document.querySelector(".menu-toggle");
   const navLinks = document.querySelector(".nav-links");
 
-  menuToggle.addEventListener("click", function () {
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener("click", function () {
       navLinks.classList.toggle("show");
-  });
+    });
+  }
 });
+
+function getBasePath() {
+  // For GitHub Pages repo sites: /<repo-name>/...
+  // For custom domains or root sites: /
+  const parts = window.location.pathname.split("/").filter(Boolean);
+  if (parts.length > 0) return "/" + parts[0] + "/";
+  return "/";
+}
+
+function setGoogTransCookie(lang) {
+  const value = lang === "it" ? "/en/it" : "/en/en";
+  const base = getBasePath();
+
+  // Set cookie for root + repo base path
+  document.cookie = `googtrans=${value};path=/;SameSite=Lax`;
+  document.cookie = `googtrans=${value};path=${base};SameSite=Lax`;
+}
+
+// ✅ Global function for your HTML onclick buttons
+window.setLang = function (lang) {
+  document.body.classList.add("lang-loading");
+  setGoogTransCookie(lang);
+  localStorage.setItem("lang", lang);
+  location.reload();
+};
+
+
+

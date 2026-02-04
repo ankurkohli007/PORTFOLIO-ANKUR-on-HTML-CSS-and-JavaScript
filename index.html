@@ -41,6 +41,12 @@
                 <li><a href="#projects" title="Projects" tooltip-bottom small-tooltip>Projects</a></li>
                 <li><a href="#publications" title="Publications" tooltip-bottom small-tooltip>Publications</a></li>
                 <li><a href="#contact" title="Contact" tooltip-bottom small-tooltip>Contact</a></li>
+                <li class="lang-switch">
+                    <div id="google_translate_element"></div>
+                    <button type="button" onclick="setLang('en')" class="flag">🇬🇧</button>
+                    <button type="button" onclick="setLang('it')" class="flag">🇮🇹</button>
+
+                </li>
             </ul>
         </div>
 
@@ -66,7 +72,8 @@
                         I have extensive experience designing and deploying realtime systems using Dockerized ROS2
                         architectures, GitLab automation, and structured CI workflows, improving system reliability and
                         deployment efficiency by over 25%. My work emphasizes modularity, low latency communication, and
-                        hardware independent scalability, validated through real world testing. I am skilled in AI, Machine
+                        hardware independent scalability, validated through real world testing. I am skilled in AI,
+                        Machine
                         Learning, and Computer Vision using PyTorch, TensorFlow, and OpenCV, applying these technologies
                         to enhance automation, perception, and data driven decision making in intelligent systems. I
                         specialize in API-driven client server development and ROS2 based backends, enabling secure and
@@ -124,7 +131,8 @@
             <div class="career-content">
                 <h2>Career <span>Identity</span></h2>
                 <p align="justify">
-                    Software Engineer with expertise in Python, C/C++, Dart, Flutter, Java, Bash, JavaScript, and API-driven distributed systems, focused on advanced technologies.
+                    Software Engineer with expertise in Python, C/C++, Dart, Flutter, Java, Bash, JavaScript, and
+                    API-driven distributed systems, focused on advanced technologies.
                 </p>
             </div>
 
@@ -149,11 +157,19 @@
                     </h4>
 
                     <ul>
-                        <li>Developed and managed cross platform frontends with a UI/UX focus and realtime, multithreaded backends, enabling secure low latency communication and improving system responsiveness by 25%.
+                        <li>Developed and managed cross platform frontends with a UI/UX focus and realtime,
+                            multithreaded backends, enabling secure low latency communication and improving system
+                            responsiveness by 25%.
                         </li>
-                        <li>Led the development and deployment of an autonomous NAV2 SLAM pipeline using automation pipelines tested on a real robot, reducing deployment time by 30% and enabling scalable multiplatform deployment.</li>
-                        <li>Enhanced system reliability through structured integration testing, validation, and debugging workflows using GitLab CI/CD, which reduced post deployment errors by 40% and improved runtime stability.</li>
-                        <li>Drove agile cross team collaboration through technical documentation, architectural design, and specifications, turning research concepts into deployable, high performance systems.</li>
+                        <li>Led the development and deployment of an autonomous NAV2 SLAM pipeline using automation
+                            pipelines tested on a real robot, reducing deployment time by 30% and enabling scalable
+                            multiplatform deployment.</li>
+                        <li>Enhanced system reliability through structured integration testing, validation, and
+                            debugging workflows using GitLab CI/CD, which reduced post deployment errors by 40% and
+                            improved runtime stability.</li>
+                        <li>Drove agile cross team collaboration through technical documentation, architectural design,
+                            and specifications, turning research concepts into deployable, high performance systems.
+                        </li>
                     </ul>
                 </div>
 
@@ -201,10 +217,11 @@
                         <div class="certification-card__content">
                             <h3 class="certification-card__title">Prompt Design in Vertex AI</h3>
                             <p class="certification-card__issuer">Google Cloud</p>
-                            <p class="certification-card__date">February 2025</p>
+                            <p class="certification-card__date">February 2026</p>
                         </div>
                         <div class="certification-card__action">
-                            <a class="btn btn-cert" target="_blank" href="https://www.skills.google/public_profiles/63ace5e6-2287-48ff-aca5-064f86782cba/badges/21940294">
+                            <a class="btn btn-cert" target="_blank"
+                                href="https://www.skills.google/public_profiles/63ace5e6-2287-48ff-aca5-064f86782cba/badges/21940294">
                                 View Certificate <i class="fa-solid fa-arrow-up-right-from-square"></i>
                             </a>
                         </div>
@@ -343,13 +360,16 @@
                     </div>
                     <div class="projects-card-box__desc">
                         <h4>ResumeAI: Next-Gen Career Intelligence Platform</h4>
-                        <p align="justify">An AI assisted resume analysis platform built with React.js, Tailwind CSS, and Puter.js, designed to provide cost efficient ATS style insights. The platform performs semantic resume job description matching, highlights skill gaps, and generates actionable improvement suggestions through GenAI integration, with a strong focus on accessibility for individuals and smaller teams.
+                        <p align="justify">An AI assisted resume analysis platform built with React.js, Tailwind CSS,
+                            and Puter.js, designed to provide cost efficient ATS style insights. The platform performs
+                            semantic resume job description matching, highlights skill gaps, and generates actionable
+                            improvement suggestions through GenAI integration, with a strong focus on accessibility for
+                            individuals and smaller teams.
                         </p>
                     </div>
                     <div class="projects-card-box__buttons">
                         <button class="btn btn-dark-outlined" title="View Project" tooltip-bottom>
-                            <a target="_blank"
-                                href="https://ankurkohli007.github.io/resumeai-platform/">View
+                            <a target="_blank" href="https://ankurkohli007.github.io/resumeai-platform/">View
                                 Project <i class="fa-solid fa-external-link"></i></a>
                         </button>
                     </div>
@@ -661,6 +681,18 @@
 
     <!-- JS -->
     <script src="./js/script.js"></script>
+
+    <!-- setlang -->
+    <script>
+        function googleTranslateElementInit() {
+          new google.translate.TranslateElement(
+            { pageLanguage: "en", includedLanguages: "en,it", autoDisplay: false },
+            "google_translate_element"
+          );
+        }
+      </script>
+      <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                  
 
 </body>
 
