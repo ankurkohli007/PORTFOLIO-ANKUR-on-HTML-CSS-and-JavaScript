@@ -1,435 +1,864 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="./images/logo.png">
-    <title>PROJECTS</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <link rel="icon" href="./images/logo.png">
+  <title>ALL PROJECTS — ANKUR KOHLI</title>
 
-    <!-- Font Awesome icons -->
-    <script src="https://kit.fontawesome.com/a9cdbedf57.js" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a9cdbedf57.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 
-    <!-- Styling CSS -->
+  <script>
+    (function() {
+      var theme = localStorage.getItem("theme");
+      if (theme === "light") document.documentElement.classList.add("light-mode-pre");
+    })();
+  </script>
+  <style>
+    html.light-mode-pre body { background-color: #faf8f5; color: #1a1614; }
+  </style>
 
-    <!-- Style 1 -->
-    <link rel="stylesheet" id="themeStylesheet" href="./css/style2.css">
+  <style>
+    /* ══ DESIGN TOKENS (mirrored from style2.css) ══ */
+    :root {
+      --red:            #ff5555;
+      --red-dark:       #c0392b;
+      --red-glow:       rgba(255, 85, 85, 0.3);
+      --red-dim:        rgba(255, 85, 85, 0.1);
+      --red-border:     rgba(255, 85, 85, 0.25);
+      --bg-deep:        #080808;
+      --bg-dark:        #0f0f0f;
+      --bg-card:        #141414;
+      --bg-card-hover:  #1a1a1a;
+      --border:         rgba(255, 255, 255, 0.07);
+      --border-hover:   rgba(255, 85, 85, 0.4);
+      --text-primary:   #f2eeea;
+      --text-secondary: #8a8680;
+      --text-muted:     #4a4845;
+      --font-display:   'Playfair Display', Georgia, serif;
+      --font-body:      'DM Sans', sans-serif;
+      --font-mono:      'Space Mono', monospace;
+      --transition:     all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      --radius:         14px;
+      --radius-sm:      8px;
+      --radius-pill:    100px;
+    }
 
+    body.light-mode {
+      --red:            #c0392b;
+      --red-dark:       #962d22;
+      --red-glow:       rgba(192, 57, 43, 0.25);
+      --red-dim:        rgba(192, 57, 43, 0.08);
+      --red-border:     rgba(192, 57, 43, 0.2);
+      --bg-deep:        #faf8f5;
+      --bg-dark:        #f2ede7;
+      --bg-card:        #ffffff;
+      --bg-card-hover:  #fdf9f6;
+      --border:         rgba(0, 0, 0, 0.07);
+      --border-hover:   rgba(192, 57, 43, 0.35);
+      --text-primary:   #1a1614;
+      --text-secondary: #5a5550;
+      --text-muted:     #a09890;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-deep);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      min-height: 100vh;
+      cursor: none;
+      transition: background-color 0.4s ease, color 0.4s ease;
+      line-height: 1.6;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ── NOISE OVERLAY ── */
+    .noise-overlay {
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 9990; opacity: 0.45;
+    }
+    body.light-mode .noise-overlay { opacity: 0.2; }
+
+    /* ── CURSOR ── */
+    #cursor-dot {
+      width: 6px; height: 6px; background: var(--red); border-radius: 50%;
+      position: fixed; top: 0; left: 0; pointer-events: none; z-index: 99999;
+      transform: translate(-50%, -50%);
+    }
+    #cursor-ring {
+      width: 34px; height: 34px; border: 1.5px solid var(--red-border); border-radius: 50%;
+      position: fixed; top: 0; left: 0; pointer-events: none; z-index: 99998;
+      transform: translate(-50%, -50%);
+      transition: width 0.3s, height 0.3s, border-color 0.3s, background 0.3s;
+    }
+    #cursor-ring.hovered { width: 54px; height: 54px; border-color: var(--red); background: var(--red-dim); }
+
+    /* ── SCROLL PROGRESS ── */
+    #scroll-progress {
+      position: fixed; top: 0; left: 0; height: 2px; width: 0%;
+      background: linear-gradient(90deg, var(--red), #ff8a80);
+      z-index: 99997; transition: width 0.08s linear;
+      box-shadow: 0 0 10px var(--red-glow);
+    }
+
+    /* ── THEME TOGGLE ── */
+    #theme-toggle {
+      position: fixed; bottom: 2rem; right: 2rem;
+      width: 48px; height: 48px; background: var(--bg-card);
+      border: 1px solid var(--border); border-radius: 50%;
+      color: var(--red); font-size: 1.1rem; cursor: pointer;
+      z-index: 9000; display: flex; align-items: center; justify-content: center;
+      transition: var(--transition); box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+    #theme-toggle:hover {
+      background: var(--red); color: #fff; border-color: var(--red);
+      transform: scale(1.1) rotate(20deg); box-shadow: 0 6px 24px var(--red-glow);
+    }
+
+    /* ══ HEADER ══ */
+    #main-header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 0 clamp(1.5rem, 5vw, 4rem); height: 70px;
+      display: flex; align-items: center;
+      background: transparent; transition: background 0.4s ease, box-shadow 0.4s ease;
+    }
+    #main-header.scrolled {
+      background: rgba(8, 8, 8, 0.92);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 1px 0 var(--border), 0 8px 32px rgba(0,0,0,0.4);
+    }
+    body.light-mode #main-header.scrolled {
+      background: rgba(250, 248, 245, 0.94);
+      box-shadow: 0 1px 0 var(--border), 0 8px 32px rgba(0,0,0,0.08);
+    }
+    .header-inner {
+      width: 100%; max-width: 1400px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .header-logo { display: flex; align-items: center; gap: 10px; }
+    .logo-text {
+      font-family: var(--font-display); font-size: 1.55rem; font-weight: 700;
+      color: var(--red); line-height: 1; letter-spacing: -1px;
+    }
+    .logo-sub {
+      font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-primary);
+      letter-spacing: 3px; text-transform: uppercase; line-height: 1.3;
+      border-left: 2px solid var(--red); padding-left: 10px; font-weight: 700;
+      text-shadow: 0 0 18px var(--red-glow);
+    }
+    body.light-mode .logo-sub { text-shadow: none; color: var(--red-dark); }
+
+    .nav-links ul { display: flex; align-items: center; gap: clamp(0.75rem, 2vw, 1.75rem); flex-wrap: wrap; }
+    .nav-link {
+      font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--text-secondary);
+      transition: var(--transition); position: relative; padding-bottom: 3px;
+    }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      height: 1px; width: 0; background: var(--red); transition: width 0.3s ease;
+    }
+    .nav-link:hover { color: var(--text-primary); }
+    .nav-link:hover::after { width: 100%; }
+    .nav-link.active { color: var(--text-primary); }
+    .nav-link.active::after { width: 100%; }
+
+    /* ═══ PAGE HERO (Projects header) ═══ */
+    .page-hero {
+      min-height: 340px; display: flex; align-items: center; justify-content: center;
+      flex-direction: column; text-align: center;
+      padding: 140px clamp(1.5rem, 6vw, 6rem) 5rem;
+      position: relative; overflow: hidden;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(120,20,10,0.14) 0%, transparent 70%),
+        var(--bg-deep);
+    }
+    body.light-mode .page-hero {
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(192,57,43,0.07) 0%, transparent 70%),
+        var(--bg-deep);
+    }
+    #particles-canvas {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 0;
+    }
+    .page-hero > * { position: relative; z-index: 1; }
+
+    .page-hero .section-tag {
+      font-family: var(--font-mono); font-size: 0.65rem;
+      letter-spacing: 3px; text-transform: uppercase; color: var(--red);
+      margin-bottom: 1rem;
+    }
+    .page-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 6vw, 5rem);
+      font-weight: 700; line-height: 1.05; letter-spacing: -1.5px;
+      color: var(--text-primary); margin-bottom: 1rem;
+    }
+    .page-hero h1 em { font-style: italic; color: var(--red); }
+    .page-hero p {
+      color: var(--text-secondary); font-size: 1rem; font-weight: 300;
+      max-width: 540px; margin: 0 auto 2rem;
+    }
+    .back-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 22px; border: 1px solid var(--border); border-radius: var(--radius-pill);
+      font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 1.2px;
+      text-transform: uppercase; color: var(--text-secondary); transition: var(--transition);
+    }
+    .back-link:hover { border-color: var(--red); color: var(--red); transform: translateX(-4px); }
+    .back-link i { transition: transform 0.3s; }
+    .back-link:hover i { transform: translateX(-4px); }
+
+    /* ═══ PROJECTS GRID ═══ */
+    .projects-section {
+      background: var(--bg-deep);
+      padding: clamp(4rem, 8vh, 6rem) clamp(1.5rem, 6vw, 6rem);
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.25rem; max-width: 1280px; margin: 0 auto;
+    }
+
+    /* ── Project Card ── */
+    .project-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 2rem;
+      position: relative; overflow: hidden; transition: var(--transition);
+      display: flex; flex-direction: column; gap: 0.875rem;
+    }
+    .project-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 2px; background: linear-gradient(90deg, var(--red), transparent);
+      transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease;
+    }
+    .project-card:hover {
+      border-color: var(--border-hover); transform: translateY(-7px);
+      box-shadow: 0 20px 48px rgba(0,0,0,0.35); background: var(--bg-card-hover);
+    }
+    body.light-mode .project-card:hover { box-shadow: 0 20px 48px rgba(0,0,0,0.09); }
+    .project-card:hover::after { transform: scaleX(1); }
+
+    .project-card.featured {
+      background: linear-gradient(135deg, var(--bg-card), var(--red-dim));
+      border-color: var(--red-border);
+    }
+
+    .project-number {
+      font-family: var(--font-display); font-size: 3.2rem; font-weight: 700;
+      color: rgba(255,255,255,0.035); line-height: 1;
+      position: absolute; top: 1rem; right: 1.25rem;
+      letter-spacing: -2px; transition: color 0.4s;
+    }
+    body.light-mode .project-number { color: rgba(0,0,0,0.04); }
+    .project-card:hover .project-number { color: var(--red-dim); }
+
+    .project-icon { font-size: 1.5rem; color: var(--red); transition: transform 0.4s; }
+    .project-card:hover .project-icon { transform: scale(1.15); }
+
+    .project-card h3 {
+      font-family: var(--font-display);
+      font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+      font-weight: 600; color: var(--text-primary); line-height: 1.35;
+    }
+    .project-card p {
+      font-size: clamp(0.85rem, 1.4vw, 0.9rem);
+      color: var(--text-secondary); line-height: 1.75;
+      font-weight: 300; flex: 1; text-align: justify;
+    }
+
+    .project-tech { display: flex; flex-wrap: wrap; gap: 6px; }
+    .project-tech span {
+      font-family: var(--font-mono); font-size: 0.62rem;
+      letter-spacing: 1px; color: var(--text-muted);
+      padding: 3px 9px; border: 1px solid var(--border); border-radius: var(--radius-pill);
+    }
+    body.light-mode .project-tech span { border-color: rgba(0,0,0,0.1); }
+
+    .project-links { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .project-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: var(--font-mono); font-size: 0.68rem;
+      letter-spacing: 1px; text-transform: uppercase; color: var(--red);
+      padding: 7px 16px; border: 1px solid var(--red-border);
+      border-radius: var(--radius-pill); align-self: flex-start; transition: var(--transition);
+    }
+    .project-link:hover {
+      background: var(--red); color: #fff;
+      border-color: var(--red); transform: translateX(4px);
+    }
+
+    /* ═══ CONTACT ═══ */
+    .contact-section {
+      background: var(--bg-dark);
+      padding: clamp(5rem, 10vh, 7rem) clamp(1.5rem, 6vw, 6rem);
+      border-top: 1px solid var(--border);
+      position: relative; overflow: hidden;
+    }
+    .contact-section::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 100%, var(--red-dim), transparent);
+      pointer-events: none;
+    }
+    .contact-inner { max-width: 900px; margin: 0 auto; text-align: center; position: relative; }
+    .contact-heading {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5.5vw, 4.5rem);
+      font-weight: 700; line-height: 1.05; letter-spacing: -1.5px;
+      color: var(--text-primary); margin-bottom: 1rem;
+    }
+    .contact-heading em { font-style: italic; color: var(--red); }
+    .contact-sub { color: var(--text-secondary); font-size: 1rem; margin-bottom: 3.25rem; font-weight: 300; }
+    .contact-cards { display: flex; justify-content: center; gap: 1.25rem; flex-wrap: wrap; }
+    .contact-card {
+      display: flex; align-items: center; gap: 12px;
+      padding: 1.2rem 1.75rem; background: var(--bg-card);
+      border: 1px solid var(--border); border-radius: var(--radius);
+      color: var(--text-primary); font-size: 0.95rem;
+      transition: var(--transition); min-width: 170px; justify-content: center;
+    }
+    .contact-card-icon {
+      width: 38px; height: 38px; background: var(--red-dim); border: 1px solid var(--red-border);
+      border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center;
+      color: var(--red); font-size: 0.95rem; transition: var(--transition); flex-shrink: 0;
+    }
+    .contact-arrow { color: var(--text-muted); font-size: 0.7rem; transition: var(--transition); }
+    .contact-card:hover {
+      border-color: var(--border-hover); background: var(--bg-card-hover);
+      transform: translateY(-6px); box-shadow: 0 14px 36px rgba(0,0,0,0.25);
+    }
+    body.light-mode .contact-card:hover { box-shadow: 0 14px 36px rgba(0,0,0,0.07); }
+    .contact-card:hover .contact-card-icon { background: var(--red); color: #fff; }
+    .contact-card:hover .contact-arrow { color: var(--red); transform: translate(2px, -2px); }
+
+    /* ═══ FOOTER ═══ */
+    footer {
+      background: var(--bg-dark); border-top: 1px solid var(--border);
+      padding: 1.75rem clamp(1.5rem, 6vw, 6rem);
+    }
+    .footer-inner {
+      max-width: 1400px; margin: 0 auto;
+      display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-logo { font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; color: var(--red); letter-spacing: -1px; }
+    footer p { font-size: 0.8rem; color: var(--text-muted); }
+    footer p a { color: var(--text-secondary); transition: color 0.3s; }
+    footer p a:hover { color: var(--red); }
+    .footer-socials { display: flex; gap: 12px; }
+    .footer-socials a { color: var(--text-muted); font-size: 1rem; transition: var(--transition); }
+    .footer-socials a:hover { color: var(--red); transform: translateY(-3px); }
+
+    /* ── LANG DROPDOWN ── */
+    .lang-switch { position: relative; }
+    .lang-current {
+      background: transparent; border: 1px solid var(--border); color: var(--text-secondary);
+      font-size: 0.82rem; cursor: pointer; padding: 5px 10px;
+      border-radius: var(--radius-sm); transition: var(--transition);
+      min-width: 68px; text-align: center; white-space: nowrap;
+      font-family: var(--font-mono); letter-spacing: 0.5px;
+    }
+    .lang-current:hover { border-color: var(--border-hover); color: var(--text-primary); }
+    .lang-menu {
+      display: block; pointer-events: none; opacity: 0; visibility: hidden;
+      transform: translateY(-6px); position: absolute; top: calc(100% + 10px); right: 0;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: 6px; min-width: 150px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4); z-index: 999;
+      transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+    }
+    .lang-dropdown.open .lang-menu {
+      pointer-events: auto; opacity: 1; visibility: visible; transform: translateY(0);
+    }
+    .lang-menu li button {
+      width: 100%; background: transparent; border: none;
+      color: var(--text-secondary); padding: 8px 12px; text-align: left;
+      cursor: pointer; font-size: 0.85rem; border-radius: 4px;
+      transition: var(--transition); display: flex; align-items: center; gap: 8px;
+    }
+    .lang-menu li button:hover { background: var(--red-dim); color: var(--text-primary); }
+
+    /* ── GOOGLE TRANSLATE CLEANUP ── */
+    .goog-te-banner-frame, iframe.goog-te-banner-frame,
+    .goog-te-balloon-frame, #goog-gt-tt, .goog-te-gadget, .goog-logo-link { display: none !important; }
+    body { top: 0 !important; }
+    html, body { margin-top: 0 !important; }
+    #google_translate_element { position: absolute; left: -9999px; visibility: hidden; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .projects-grid { grid-template-columns: 1fr; }
+      .logo-sub { display: none; }
+      .nav-links ul { gap: 0.6rem; }
+      .nav-link { font-size: 0.62rem; }
+      .contact-cards { flex-direction: column; align-items: center; }
+      .contact-card { width: 100%; max-width: 300px; }
+    }
+    @media (max-width: 480px) {
+      body { cursor: auto; }
+      #cursor-dot, #cursor-ring { display: none; }
+      #theme-toggle { bottom: 1.25rem; right: 1.25rem; width: 42px; height: 42px; }
+    }
+  </style>
 </head>
-
-
 <body>
 
-    <header>
+<div id="google_translate_element" style="position:absolute;left:-9999px;visibility:hidden;"></div>
+<div id="scroll-progress"></div>
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+<div class="noise-overlay"></div>
 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<button id="theme-toggle" aria-label="Toggle light/dark mode" title="Toggle Theme">
+  <i class="fa-solid fa-sun" id="theme-icon"></i>
+</button>
 
-        <div>
-            <a href="./index.html"><span class="logo">SOFTWARE ENGINEER</span></a>
+<!-- HEADER -->
+<header id="main-header">
+  <div class="header-inner">
+    <a href="./index.html" class="header-logo">
+      <span class="logo-text">AK</span>
+      <span class="logo-sub">SOFTWARE ENGINEER</span>
+    </a>
+    <nav class="nav-links">
+      <ul>
+        <li><a href="./index.html#home" class="nav-link">Home</a></li>
+        <li><a href="./index.html#career-identity" class="nav-link">Career Identity</a></li>
+        <li><a href="./index.html#professional-experience" class="nav-link">Experience</a></li>
+        <li><a href="./index.html#certification" class="nav-link">Certifications</a></li>
+        <li><a href="./index.html#projects" class="nav-link">Projects</a></li>
+        <li><a href="./index.html#publications" class="nav-link">Publications</a></li>
+        <li><a href="./index.html#contact" class="nav-link">Contact</a></li>
+        <li class="lang-switch lang-dropdown">
+          <button class="lang-current" type="button" aria-haspopup="true" aria-expanded="false">🇬🇧 EN</button>
+          <ul class="lang-menu">
+            <li><button type="button" data-lang="en" onclick="setLang('en')">🇬🇧 English</button></li>
+            <li><button type="button" data-lang="it" onclick="setLang('it')">🇮🇹 Italiano</button></li>
+            <li><button type="button" data-lang="de" onclick="setLang('de')">🇩🇪 Deutsch</button></li>
+            <li><button type="button" data-lang="nl" onclick="setLang('nl')">🇳🇱 Nederlands</button></li>
+            <li><button type="button" data-lang="fr" onclick="setLang('fr')">🇫🇷 Français</button></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <canvas id="particles-canvas"></canvas>
+    <div class="section-tag" data-aos="fade-down">— EXTRA CURRICULAR EXPERIENCE</div>
+    <h1 data-aos="fade-up" data-aos-delay="80">All <em>Projects</em></h1>
+    <p data-aos="fade-up" data-aos-delay="160">A complete collection of projects spanning AI, robotics, web development, and machine learning.</p>
+    <a href="./index.html" class="back-link" data-aos="fade-up" data-aos-delay="240">
+      <i class="fa-solid fa-arrow-left"></i> Back to Portfolio
+    </a>
+  </section>
+
+  <!-- PROJECTS GRID -->
+  <section class="projects-section">
+    <div class="projects-grid">
+
+      <!-- 01 -->
+      <div class="project-card featured" data-aos="fade-up" data-aos-delay="0">
+        <div class="project-number">01</div>
+        <div class="project-icon"><i class="fa-solid fa-microchip"></i></div>
+        <h3>ResumeAI: Next-Gen Career Intelligence Platform</h3>
+        <p>An AI assisted resume analysis platform built with React.js, Tailwind CSS, and Puter.js, designed to provide cost efficient ATS style insights. The platform performs semantic resume job description matching, highlights skill gaps, and generates actionable improvement suggestions through GenAI integration, with a strong focus on accessibility for individuals and smaller teams.</p>
+        <div class="project-tech"><span>React</span><span>Tailwind</span><span>GenAI</span><span>Puter.js</span></div>
+        <div class="project-links">
+          <a target="_blank" href="https://ankurkohli007.github.io/resumeai-platform/" class="project-link">View Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
         </div>
+      </div>
 
-        <div class="nav-links">
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About Me</a></li>
-                <li><a href="#career-identity">Career Identity</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#publications">Publications</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <!-- setlang button -->
-                <li class="lang-switch lang-dropdown">
-                    <div id="google_translate_element"></div>
-
-                    <button class="lang-current" type="button" aria-haspopup="true" aria-expanded="false">
-                        🌐
-                    </button>
-
-                    <ul class="lang-menu">
-                        <li>
-                            <button type="button" onclick="setLang('en')" data-tooltip="English" tooltip-right
-                                small-tooltip>🇬🇧
-                                English</button>
-                        </li>
-                        <li>
-                            <button type="button" onclick="setLang('it')" data-tooltip="Italiano" tooltip-right
-                                small-tooltip>🇮🇹
-                                Italiano</button>
-                        </li>
-                        <li>
-                            <button type="button" onclick="setLang('de')" data-tooltip="Deutsch" tooltip-right
-                                small-tooltip>🇩🇪
-                                Deutsch</button>
-                        </li>
-                        <li>
-                            <button type="button" onclick="setLang('nl')" data-tooltip="Nederlands" tooltip-right
-                                small-tooltip>🇳🇱
-                                Nederlands</button>
-                        </li>
-                        <li>
-                            <button type="button" onclick="setLang('fr')" data-tooltip="Français" tooltip-right
-                                small-tooltip>🇫🇷
-                                Français</button>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+      <!-- 02 -->
+      <div class="project-card" data-aos="fade-up" data-aos-delay="60">
+        <div class="project-number">02</div>
+        <div class="project-icon"><i class="fa-solid fa-cloud-sun"></i></div>
+        <h3>SkyScope: Live Weather Dashboard with API Integration</h3>
+        <p>A fully interactive weather platform that delivers real-time forecasts, AQI metrics, and dynamic visual effects based on live conditions. Developed using JavaScript, Bootstrap, and Canvas animations, the app adapts its UI to weather and time of day, creating an engaging and responsive user experience.</p>
+        <div class="project-tech"><span>JavaScript</span><span>Bootstrap</span><span>REST API</span><span>Canvas</span></div>
+        <div class="project-links">
+          <a target="_blank" href="https://ankurkohli007.github.io/SkyScope-WeatherApp-JS_RESTFul-API/" class="project-link">View Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
         </div>
+      </div>
 
-
-    </header>
-
-
-
-    <main>
-        <!-- Projects Section -->
-        <section class="projects-section" id="projects">
-            <h2><span>Projects</span></h2>
-            <div class="projects-cards">
-
-                <div class="projects-card-box">
-                    <div class="projects-card-box__icons">
-                        <i class="fa-solid fa-microchip me-2"></i>
-                    </div>
-                    <div class="projects-card-box__desc">
-                        <h4>ResumeAI: Next-Gen Career Intelligence Platform</h4>
-                        <p align="justify">An AI assisted resume analysis platform built with React.js, Tailwind CSS,
-                            and Puter.js, designed to provide cost efficient ATS style insights. The platform performs
-                            semantic resume job description matching, highlights skill gaps, and generates actionable
-                            improvement suggestions through GenAI integration, with a strong focus on accessibility for
-                            individuals and smaller teams.
-                        </p>
-                    </div>
-                    <div class="projects-card-box__buttons">
-                        <button class="btn btn-dark-outlined" title="View Project" tooltip-bottom>
-                            <a target="_blank" href="https://ankurkohli007.github.io/resumeai-platform/">View
-                                Project <i class="fa-solid fa-external-link"></i></a>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="projects-card-box">
-                    <div class="projects-card-box__icons">
-                        <i class="fa-solid fa-lightbulb"></i>
-                    </div>
-                    <div class="projects-card-box__desc">
-                        <h4>SkyScope: Live Weather Dashboard with API Integration</h4>
-                        <p align="justify">A fully interactive weather platform that delivers real-time forecasts, AQI
-                            metrics, and dynamic visual effects based on live conditions. Developed using JavaScript,
-                            Bootstrap, and Canvas animations, the app adapts its UI to weather and time of day, creating
-                            an engaging and responsive user experience.
-                        </p>
-                    </div>
-                    <div class="projects-card-box__buttons">
-                        <button class="btn btn-dark-outlined" title="View Project" tooltip-bottom>
-                            <a target="_blank"
-                                href="https://ankurkohli007.github.io/SkyScope-WeatherApp-JS_RESTFul-API/">View
-                                Project <i class="fa-solid fa-external-link"></i></a>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="projects-card-box">
-                    <div class="projects-card-box__icons">
-                        <i class="fa-solid fa-gamepad"></i>
-                    </div>
-                    <div class="projects-card-box__desc">
-                        <h4>Interactive Game using JavaScript</h4>
-                        <p align="justify">A lightweight, browser-based Rock-Paper-Scissors game built using plain HTML,
-                            CSS, and JavaScript. The project focuses on simple UI, clean structure, and
-                            beginner-friendly logic that clearly demonstrates DOM manipulation and event handling.
-                        </p>
-                    </div>
-                    <div class="projects-card-box__buttons">
-                        <button class="btn btn-dark-outlined" title="View Project" tooltip-bottom>
-                            <a target="_blank" href="https://ankurkohli007.github.io/rock-paper-scissors-js/">View
-                                Project <i class="fa-solid fa-external-link"></i></a>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="projects-card-box">
-                    <div class="projects-card-box__icons">
-                        <i class="fa-solid fa-utensils"></i>
-                    </div>
-                    <div class="projects-card-box__desc">
-                        <h4>Responsive Website Design</h4>
-                        <p align="justify">A Restaurant website developed using HTML, CSS, and some minor functions in
-                            JavaScript, demonstrating front-end development skills and basic web design principles.
-                        </p>
-                    </div>
-                    <div class="projects-card-box__buttons">
-                        <button class="btn btn-dark-outlined">
-                            <a target="_blank"
-                                href="https://ankurkohli007.github.io/Responsive-Website-Design-HTML-CSS-JS/">View
-                                Project <i class="fa-solid fa-external-link"></i></a>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="projects-card-box">
-                    <div class="projects-card-box__icons">
-                        <i class="fa-solid fa-redo"></i>
-                    </div>
-                    <div class="projects-card-box__desc">
-                        <h4>3D reconstruction</h4>
-                        <p align="justify">To developed immersive virtual reality experiences of robotics by capturing
-                            and converting real-world objects or environments into detailed 3D models.
-                        </p>
-                    </div>
-                    <div class="projects-card-box__buttons">
-                        <button class="btn btn-dark-outlined">
-                            <a target="_blank" href="https://youtu.be/3dDWKMFSGl0?si=kdKeFMuSSkVejtp-">View Project on
-                                YouTube <i class="fa-solid fa-external-link"></i></a>
-                            <br>
-                            <a target="_blank"
-                                href="https://github.com/ankurkohli007/Photogrammetry-and-3D-Model-Reconstruction_Virtual-Reality-for-Robotics.git">View
-                                Project on GitHub <i class="fa-solid fa-external-link"></i></a>
-                        </button>
-                    </div>
-
-                </div>
-
-                <div class="projects-card-box">
-                    <div class="projects-card-box__icons">
-                        <i class="fa-solid fa-laptop-medical"></i>
-                    </div>
-                    <div class="projects-card-box__desc">
-                        <h4>Cervical Cancer Detection using CNN & VGG16 Module</h4>
-                        <p align="justify">This work is based on Cervical cancer detection using CNNs involves
-                            leveraging deep learning models like VGG16 to classify cervical cancer in medical images,
-                            such as Pap smear slides, due to its proven effectiveness in image recognition tasks.
-                        </p>
-                    </div>
-                    <div class="projects-card-box__buttons">
-                        <button class="btn btn-dark-outlined">
-                            <a href="https://github.com/ankurkohli007/Cervical-Cancer-Detection-CNNs-VGG16-module-TensorFlow.git"
-                                target="_blank">View Project <i class="fa-solid fa-external-link"></i></a>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="projects-card-box">
-                    <div class="projects-card-box__icons">
-                        <i class="fab fa-steam-symbol"></i>
-                    </div>
-                    <div class="projects-card-box__desc">
-                        <h4>Software Architecture for Mobile Robot Control</h4>
-                        <p align="justify">This project involves developing a software archi- tecture for controlling a
-                            mobile robot by applying graph-based routing and Dijkstra’s. It is based on using ROS,
-                            Gazebo, and RViz to control the robot. Also, it consists of writing ROS nodes in Python: a
-                            controller for the robot and a UI.
-                        </p>
-                    </div>
-                    <div class="projects-card-box__buttons">
-                        <button class="btn btn-dark-outlined">
-                            <a href="https://github.com/ankurkohli007/Research_Track_I_Assignment_3?tab=readme-ov-file#performance-of-mobile-robot-control"
-                                target="_blank">View Project <i class="fa-solid fa-external-link"></i></a>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="projects-card-box">
-                    <div class="projects-card-box__icons">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div class="projects-card-box__desc">
-                        <h4>Reinforcement Learning using A2C Algorithm & PPO Algorithm for Lunar Lander</h4>
-                        <p align="justify">Implemented solutions for the Lunar Lander problem using Advantage
-                            Actor-Critic (A2C) and Proximal Policy Optimization (PPO) algorithms within the framework of
-                            Reinforcement Learning, focusing on optimizing policy by implementing policy iteration
-                            approaches and value functions for efficient and robust lander control.
-                        </p>
-                    </div>
-                    <div class="projects-card-box__buttons">
-                        <button class="btn btn-dark-outlined">
-                            <a href="https://github.com/ankurkohli007/A2C-PPO-Reinforcement-Learning_Machine-Learning-for-Robotics-II#outcomes"
-                                target="_blank">View Project <i class="fa-solid fa-external-link"></i></a>
-                        </button>
-                    </div>
-                </div>
-
-
-
-                <div class="projects-card-box">
-                    <div class="projects-card-box__icons">
-                        <i class="fas fa-portrait"></i>
-                    </div>
-                    <div class="projects-card-box__desc">
-                        <h4>Convolutional Neural Networks (CNNs) to Process an Image - PyTorch</h4>
-                        <p align="justify">Implemented Convolutional Neural Networks (CNNs) in a Jupyter Notebook using
-                            PyTorch to process and analyze image data efficiently, leveraging advanced deep learning
-                            techniques.
-                        </p>
-                    </div>
-                    <div class="projects-card-box__buttons">
-                        <button class="btn btn-dark-outlined">
-                            <a href="https://github.com/ankurkohli007/Convolutional-Neural-Networks-CNNs-to-process-an-Image---Jupyter-Notebook-PyTorch.git"
-                                target="_blank">View Project <i class="fa-solid fa-external-link"></i></a>
-                        </button>
-                    </div>
-                </div>
-
-
-                <div class="projects-card-box">
-                    <div class="projects-card-box__icons">
-                        <i class="fas fa-dolly-flatbed"></i>
-                    </div>
-                    <div class="projects-card-box__desc">
-                        <h4>AI Planning</h4>
-                        <p align="justify">This project implements an AI planning warehouse system leveraging priority
-                            queues, plan graphs, and a greedy best-first search algorithm to optimize order management,
-                            enhance storage capacity, and improve efficiency via advanced inventory algorithms and
-                            real-time data analytics.
-                        </p>
-                    </div>
-                    <div class="projects-card-box__buttons">
-                        <button class="btn btn-dark-outlined">
-                            <a href="https://github.com/ankurkohli007/Artificial_Intelligent_4_Robotics_2_Assignment_I?tab=readme-ov-file#outcomes"
-                                target="_blank">View Project <i class="fa-solid fa-external-link"></i></a>
-                        </button>
-                    </div>
-                </div>
-
-
-                <div class="projects-card-box">
-                    <div class="projects-card-box__icons">
-                        <i class="fas fa-cog"></i>
-                    </div>
-                    <div class="projects-card-box__desc">
-                        <h4>Implementation of Keepout Zones on a NAV2 Navigation System</h4>
-                        <p align="justify">This work is about the implementation of Keepout Zone using NAV2 packages.
-                            Also, this is implemented on ROS2, NAV2, Webots world, and so on.
-                        </p>
-                    </div>
-                    <div class="projects-card-box__buttons">
-                        <button class="btn btn-dark-outlined">
-                            <a href="https://github.com/ankurkohli007/Software_Architecture_4_Robotics_Assignment#performance-of-the-tiago-robot"
-                                target="_blank">View Project <i class="fa-solid fa-external-link"></i></a>
-                        </button>
-                    </div>
-                </div>
-
-
-                <div class="projects-card-box">
-                    <div class="projects-card-box__icons">
-                        <i class="fas fa-book-open"></i>
-                    </div>
-                    <div class="projects-card-box__desc">
-                        <h4>Smart Book Store Ontology</h4>
-                        <p align="justify">The work is based on Ontology which involves the topic in Ambient
-                            Intelligence (AmI). This will deals with Ambient Intelligence application.
-                        </p>
-                    </div>
-                    <div class="projects-card-box__buttons">
-                        <button class="btn btn-dark-outlined">
-                            <a href="https://github.com/ankurkohli007/Smart_Book_Store_Ontology.git"
-                                target="_blank">View Project <i class="fa-solid fa-external-link"></i></a>
-                        </button>
-                    </div>
-                </div>
-
-
-                <div class="projects-card-box">
-                    <div class="projects-card-box__icons">
-                        <i class="fas fa-charging-station"></i>
-                    </div>
-                    <div class="projects-card-box__desc">
-                        <h4>Adaptive Autonomous Surveillance Robot for Indoor Environments with Energy Management</h4>
-                        <p align="justify">This project aims to develop an adaptive autonomous surveillance robot
-                            designed for indoor environments, incorporating advanced energy management systems to
-                            enhance operational efficiency and autonomy.
-                        </p>
-                    </div>
-                    <div class="projects-card-box__buttons">
-                        <button class="btn btn-dark-outlined">
-                            <a href="https://github.com/ankurkohli007/Experimental_Robotics_Laboratory_Assignment_I#final-outcome"
-                                target="_blank">View Project <i class="fa-solid fa-external-link"></i></a>
-                        </button>
-                    </div>
-                </div>
-
-
-                <div class="projects-card-box">
-                    <div class="projects-card-box__icons">
-                        <i class="fas fa-bug"></i>
-                    </div>
-                    <div class="projects-card-box__desc">
-                        <h4>Integration of Autonomous Surveillance Robot Architecture with Robotic Simulation for Indoor
-                            Environment Mapping and Patrolling</h4>
-                        <p align="justify">This work integrates an autonomous surveillance robot, demonstrating semantic
-                            mapping and navigation using graph-based routing (Dijkstra’s & A*), OpenCV ROS, and SLAM,
-                            implemented with data structures and algorithms in C++ and Python.
-                        </p>
-                    </div>
-                    <div class="projects-card-box__buttons">
-                        <button class="btn btn-dark-outlined">
-                            <a href="https://github.com/ankurkohli007/Experimental_Robotics_Laboratory_Assignment_I#final-outcome"
-                                target="_blank">View Project <i class="fa-solid fa-external-link"></i></a>
-                        </button>
-                    </div>
-                </div>
-
-
-            </div>
-        </section>
-
-
-
-    </main>
-
-    <!-- Contact Section -->
-    <section class="contact-section" id="contact">
-        <h2>Contact <span>ME!</span></h2>
-
-        <div class="contact-container">
-            <!-- LinkedIn -->
-            <a class="contact-btn" target="_blank" href="https://www.linkedin.com/in/ankur-kohli-7a5865157/">
-                <i class="fa-brands fa-linkedin"></i> LinkedIn
-            </a>
-
-            <!-- Gmail -->
-            <a class="contact-btn" target="_blank"
-                href="mailto:ankurkohli1997007@gmail.com?subject=To book an appointment for the interview.&body=Hello, I'm interested in your profile %26 I would like to discuss more about your background and skills!">
-                <i class="fa-solid fa-envelope"></i> Gmail
-            </a>
-
-            <!-- Phone -->
-            <a class="contact-btn" href="tel:+39 3452 355 116">
-                <i class="fa-solid fa-phone"></i> Phone
-            </a>
+      <!-- 03 -->
+      <div class="project-card" data-aos="fade-up" data-aos-delay="120">
+        <div class="project-number">03</div>
+        <div class="project-icon"><i class="fa-solid fa-gamepad"></i></div>
+        <h3>Interactive Game using JavaScript</h3>
+        <p>A lightweight, browser-based Rock-Paper-Scissors game built using plain HTML, CSS, and JavaScript. The project focuses on simple UI, clean structure, and beginner-friendly logic that clearly demonstrates DOM manipulation and event handling.</p>
+        <div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+        <div class="project-links">
+          <a target="_blank" href="https://ankurkohli007.github.io/rock-paper-scissors-js/" class="project-link">View Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
         </div>
-    </section>
+      </div>
 
+      <!-- 04 -->
+      <div class="project-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="project-number">04</div>
+        <div class="project-icon"><i class="fa-solid fa-utensils"></i></div>
+        <h3>Responsive Website Design</h3>
+        <p>A Restaurant website developed using HTML, CSS, and some minor functions in JavaScript, demonstrating front-end development skills and basic web design principles.</p>
+        <div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+        <div class="project-links">
+          <a target="_blank" href="https://ankurkohli007.github.io/Responsive-Website-Design-HTML-CSS-JS/" class="project-link">View Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </div>
+      </div>
 
-    </main>
+      <!-- 05 -->
+      <div class="project-card" data-aos="fade-up" data-aos-delay="60">
+        <div class="project-number">05</div>
+        <div class="project-icon"><i class="fa-solid fa-redo"></i></div>
+        <h3>3D Reconstruction</h3>
+        <p>Developed immersive virtual reality experiences of robotics by capturing and converting real-world objects or environments into detailed 3D models using photogrammetry techniques.</p>
+        <div class="project-tech"><span>3D Modeling</span><span>VR</span><span>Photogrammetry</span></div>
+        <div class="project-links">
+          <a target="_blank" href="https://youtu.be/3dDWKMFSGl0?si=kdKeFMuSSkVejtp-" class="project-link">YouTube <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+          <a target="_blank" href="https://github.com/ankurkohli007/Photogrammetry-and-3D-Model-Reconstruction_Virtual-Reality-for-Robotics.git" class="project-link">GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </div>
+      </div>
 
-    <footer>
-        <p>Copyright &copy; 2026 - <a href="https://ankurkohli007.github.io/PORTFOLIO-ANKUR-on-HTML-CSS-and-JavaScript/" target="_blank">Ankur Kohli</a> - All
-            Rights
-            Reserved.</p>
-        <!-- <div class="footer-buttons">
-            <button data-theme="./css/style1.css" class="footer__theme1 active-theme" title="Style 1" tooltip-top>Style
-                1</button>
-            <button data-theme="./css/style2.css" class="footer__theme2" title="Style 2" tooltip-top>Style 2</button>
-        </div> -->
+      <!-- 06 -->
+      <div class="project-card" data-aos="fade-up" data-aos-delay="120">
+        <div class="project-number">06</div>
+        <div class="project-icon"><i class="fa-solid fa-laptop-medical"></i></div>
+        <h3>Cervical Cancer Detection using CNN &amp; VGG16</h3>
+        <p>Leveraging deep learning models like VGG16 to classify cervical cancer in medical images, such as Pap smear slides, due to its proven effectiveness in image recognition tasks using TensorFlow.</p>
+        <div class="project-tech"><span>Python</span><span>TensorFlow</span><span>VGG16</span><span>CNN</span></div>
+        <div class="project-links">
+          <a target="_blank" href="https://github.com/ankurkohli007/Cervical-Cancer-Detection-CNNs-VGG16-module-TensorFlow.git" class="project-link">View Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </div>
+      </div>
 
-    </footer>
+      <!-- 07 -->
+      <div class="project-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="project-number">07</div>
+        <div class="project-icon"><i class="fab fa-steam-symbol"></i></div>
+        <h3>Software Architecture for Mobile Robot Control</h3>
+        <p>Developing a software architecture for controlling a mobile robot by applying graph-based routing and Dijkstra's, using ROS, Gazebo, and RViz. Includes ROS nodes in Python: a controller and a UI.</p>
+        <div class="project-tech"><span>ROS</span><span>Python</span><span>Gazebo</span><span>RViz</span></div>
+        <div class="project-links">
+          <a target="_blank" href="https://github.com/ankurkohli007/Research_Track_I_Assignment_3?tab=readme-ov-file" class="project-link">View Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </div>
+      </div>
 
+      <!-- 08 -->
+      <div class="project-card" data-aos="fade-up" data-aos-delay="60">
+        <div class="project-number">08</div>
+        <div class="project-icon"><i class="fas fa-chart-line"></i></div>
+        <h3>Reinforcement Learning using A2C &amp; PPO for Lunar Lander</h3>
+        <p>Implemented solutions for the Lunar Lander problem using Advantage Actor-Critic (A2C) and Proximal Policy Optimization (PPO) algorithms, focusing on optimizing policy via policy iteration approaches and value functions.</p>
+        <div class="project-tech"><span>Python</span><span>RL</span><span>A2C</span><span>PPO</span></div>
+        <div class="project-links">
+          <a target="_blank" href="https://github.com/ankurkohli007/A2C-PPO-Reinforcement-Learning_Machine-Learning-for-Robotics-II" class="project-link">View Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </div>
+      </div>
 
-    <!-- JS -->
-    <script src="./js/script.js"></script>
-    <!-- setlang -->
-    <script>
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement(
-                { pageLanguage: "en", includedLanguages: "en,it,de,nl,fr", autoDisplay: false },
-                "google_translate_element"
-            );
+      <!-- 09 -->
+      <div class="project-card" data-aos="fade-up" data-aos-delay="120">
+        <div class="project-number">09</div>
+        <div class="project-icon"><i class="fas fa-portrait"></i></div>
+        <h3>CNNs to Process an Image — PyTorch</h3>
+        <p>Implemented Convolutional Neural Networks (CNNs) in a Jupyter Notebook using PyTorch to process and analyze image data efficiently, leveraging advanced deep learning techniques.</p>
+        <div class="project-tech"><span>Python</span><span>PyTorch</span><span>CNN</span><span>Jupyter</span></div>
+        <div class="project-links">
+          <a target="_blank" href="https://github.com/ankurkohli007/Convolutional-Neural-Networks-CNNs-to-process-an-Image---Jupyter-Notebook-PyTorch.git" class="project-link">View Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </div>
+      </div>
+
+      <!-- 10 -->
+      <div class="project-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="project-number">10</div>
+        <div class="project-icon"><i class="fas fa-dolly-flatbed"></i></div>
+        <h3>AI Planning</h3>
+        <p>Implements an AI planning warehouse system leveraging priority queues, plan graphs, and a greedy best-first search algorithm to optimize order management, enhance storage capacity, and improve efficiency via advanced inventory algorithms and real-time data analytics.</p>
+        <div class="project-tech"><span>AI</span><span>Python</span><span>Search Algorithms</span></div>
+        <div class="project-links">
+          <a target="_blank" href="https://github.com/ankurkohli007/Artificial_Intelligent_4_Robotics_2_Assignment_I?tab=readme-ov-file#outcomes" class="project-link">View Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </div>
+      </div>
+
+      <!-- 11 -->
+      <div class="project-card" data-aos="fade-up" data-aos-delay="60">
+        <div class="project-number">11</div>
+        <div class="project-icon"><i class="fas fa-cog"></i></div>
+        <h3>Implementation of Keepout Zones on a NAV2 Navigation System</h3>
+        <p>Implementation of Keepout Zone using NAV2 packages, implemented on ROS2, NAV2, and Webots world, demonstrating advanced navigation constraint techniques for autonomous robots.</p>
+        <div class="project-tech"><span>ROS2</span><span>NAV2</span><span>Webots</span><span>Python</span></div>
+        <div class="project-links">
+          <a target="_blank" href="https://github.com/ankurkohli007/Software_Architecture_4_Robotics_Assignment#performance-of-the-tiago-robot" class="project-link">View Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </div>
+      </div>
+
+      <!-- 12 -->
+      <div class="project-card" data-aos="fade-up" data-aos-delay="120">
+        <div class="project-number">12</div>
+        <div class="project-icon"><i class="fas fa-book-open"></i></div>
+        <h3>Smart Book Store Ontology</h3>
+        <p>Based on Ontology involving the topic in Ambient Intelligence (AmI). This deals with Ambient Intelligence applications to create a smart, interconnected bookstore knowledge system.</p>
+        <div class="project-tech"><span>Ontology</span><span>AmI</span><span>OWL</span></div>
+        <div class="project-links">
+          <a target="_blank" href="https://github.com/ankurkohli007/Smart_Book_Store_Ontology.git" class="project-link">View Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </div>
+      </div>
+
+      <!-- 13 -->
+      <div class="project-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="project-number">13</div>
+        <div class="project-icon"><i class="fas fa-charging-station"></i></div>
+        <h3>Adaptive Autonomous Surveillance Robot with Energy Management</h3>
+        <p>Developed an adaptive autonomous surveillance robot designed for indoor environments, incorporating advanced energy management systems to enhance operational efficiency and autonomy in continuous patrolling tasks.</p>
+        <div class="project-tech"><span>ROS</span><span>Python</span><span>SLAM</span><span>Energy Mgmt</span></div>
+        <div class="project-links">
+          <a target="_blank" href="https://github.com/ankurkohli007/Experimental_Robotics_Laboratory_Assignment_I#final-outcome" class="project-link">View Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </div>
+      </div>
+
+      <!-- 14 -->
+      <div class="project-card" data-aos="fade-up" data-aos-delay="60">
+        <div class="project-number">14</div>
+        <div class="project-icon"><i class="fas fa-bug"></i></div>
+        <h3>Autonomous Surveillance Robot for Indoor Mapping &amp; Patrolling</h3>
+        <p>Integrates an autonomous surveillance robot demonstrating semantic mapping and navigation using graph-based routing (Dijkstra's &amp; A*), OpenCV ROS, and SLAM, implemented with data structures and algorithms in C++ and Python.</p>
+        <div class="project-tech"><span>C++</span><span>Python</span><span>OpenCV</span><span>SLAM</span><span>ROS</span></div>
+        <div class="project-links">
+          <a target="_blank" href="https://github.com/ankurkohli007/Experimental_Robotics_Laboratory_Assignment_I#final-outcome" class="project-link">View Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section">
+    <div class="contact-inner" data-aos="fade-up" data-aos-duration="900">
+      <h2 class="contact-heading">Contact <br><em>ME!</em></h2>
+      <p class="contact-sub">Open to full-time roles, freelance projects, and research collaborations.</p>
+      <div class="contact-cards">
+        <a class="contact-card" target="_blank" href="https://www.linkedin.com/in/ankur-kohli-7a5865157/">
+          <div class="contact-card-icon"><i class="fa-brands fa-linkedin"></i></div>
+          <span>LinkedIn</span>
+          <i class="fa-solid fa-arrow-up-right-from-square contact-arrow"></i>
+        </a>
+        <a class="contact-card" target="_blank" href="mailto:ankurkohli1997007@gmail.com?subject=To book an appointment for the interview.&body=Hello, I'm interested in your profile %26 I would like to discuss more about your background and skills!">
+          <div class="contact-card-icon"><i class="fa-solid fa-envelope"></i></div>
+          <span>Gmail</span>
+          <i class="fa-solid fa-arrow-up-right-from-square contact-arrow"></i>
+        </a>
+        <a class="contact-card" href="tel:+39 3452 355 116">
+          <div class="contact-card-icon"><i class="fa-solid fa-phone"></i></div>
+          <span>Phone</span>
+          <i class="fa-solid fa-arrow-up-right-from-square contact-arrow"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-logo">AK</span>
+    <p>Copyright &copy; 2026 — <a href="https://ankurkohli007.github.io/PORTFOLIO-ANKUR-on-HTML-CSS-and-JavaScript/" target="_blank">Ankur Kohli</a> — All Rights Reserved.</p>
+    <div class="footer-socials">
+      <a href="http://www.github.com/ankurkohli007" target="_blank"><i class="fa-brands fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/ankur-kohli-7a5865157/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+const LANG_MAP = {
+  en: { flag: "🇬🇧", label: "EN" },
+  it: { flag: "🇮🇹", label: "IT" },
+  de: { flag: "🇩🇪", label: "DE" },
+  nl: { flag: "🇳🇱", label: "NL" },
+  fr: { flag: "🇫🇷", label: "FR" },
+};
+
+document.addEventListener("DOMContentLoaded", function () {
+  AOS.init({ once: true, easing: "ease-out-quart", duration: 900, offset: 60 });
+
+  /* THEME */
+  const themeToggle = document.getElementById("theme-toggle");
+  const themeIcon   = document.getElementById("theme-icon");
+  const savedTheme  = localStorage.getItem("theme") ?? "dark";
+  function applyTheme(theme) {
+    document.body.classList.toggle("light-mode", theme === "light");
+    if (themeIcon) themeIcon.className = theme === "light" ? "fa-solid fa-moon" : "fa-solid fa-sun";
+    localStorage.setItem("theme", theme);
+  }
+  applyTheme(savedTheme);
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+      applyTheme(document.body.classList.contains("light-mode") ? "dark" : "light");
+    });
+  }
+
+  /* PARTICLE CANVAS */
+  const canvas = document.getElementById("particles-canvas");
+  if (canvas) {
+    const ctx = canvas.getContext("2d");
+    function resize() { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
+    resize();
+    window.addEventListener("resize", resize);
+    const pts = Array.from({ length: 45 }, () => ({
+      x: Math.random() * canvas.width, y: Math.random() * canvas.height,
+      vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4,
+      r: Math.random() * 1.5 + 0.5, a: Math.random() * 0.4 + 0.1,
+    }));
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const isLight = document.body.classList.contains("light-mode");
+      const c = isLight ? "192,57,43" : "255,85,85";
+      pts.forEach(p => {
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${c},${p.a})`; ctx.fill();
+      });
+      for (let i = 0; i < pts.length; i++) {
+        for (let j = i + 1; j < pts.length; j++) {
+          const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
+          const d = Math.sqrt(dx*dx + dy*dy);
+          if (d < 110) {
+            ctx.beginPath(); ctx.moveTo(pts[i].x, pts[i].y); ctx.lineTo(pts[j].x, pts[j].y);
+            ctx.strokeStyle = `rgba(${c},${0.07 * (1 - d/110)})`; ctx.lineWidth = 0.5; ctx.stroke();
+          }
         }
-    </script>
-    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+      }
+      requestAnimationFrame(draw);
+    }
+    draw();
+  }
+
+  /* CUSTOM CURSOR */
+  const dot  = document.getElementById("cursor-dot");
+  const ring = document.getElementById("cursor-ring");
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener("mousemove", e => { mx = e.clientX; my = e.clientY; });
+  function animateCursor() {
+    if (dot)  { dot.style.left = mx + "px"; dot.style.top = my + "px"; }
+    rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
+    if (ring) { ring.style.left = rx + "px"; ring.style.top = ry + "px"; }
+    requestAnimationFrame(animateCursor);
+  }
+  animateCursor();
+  document.querySelectorAll("a, button, .project-card, .contact-card").forEach(el => {
+    el.addEventListener("mouseenter", () => ring && ring.classList.add("hovered"));
+    el.addEventListener("mouseleave", () => ring && ring.classList.remove("hovered"));
+  });
+
+  /* LANG DROPDOWN */
+  const langDropdown = document.querySelector(".lang-dropdown");
+  const langBtn = langDropdown ? langDropdown.querySelector(".lang-current") : null;
+  let dropdownOpen = false;
+  const savedLang = localStorage.getItem("lang") ?? "en";
+  if (langBtn) {
+    const entry = LANG_MAP[savedLang] || LANG_MAP["en"];
+    langBtn.textContent = entry.flag + " " + entry.label;
+  }
+  const scrollKey = "__lang_scroll";
+  const savedScroll = sessionStorage.getItem(scrollKey);
+  if (savedScroll !== null) {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        window.scrollTo(0, parseInt(savedScroll, 10));
+        sessionStorage.removeItem(scrollKey);
+      });
+    });
+  }
+  if (langBtn) {
+    langBtn.addEventListener("click", function(e) {
+      e.stopPropagation();
+      dropdownOpen ? closeDropdown() : openDropdown();
+    });
+  }
+  function openDropdown() {
+    if (!langDropdown || !langBtn) return;
+    dropdownOpen = true; langDropdown.classList.add("open"); langBtn.setAttribute("aria-expanded","true");
+  }
+  function closeDropdown() {
+    if (!langDropdown || !langBtn) return;
+    dropdownOpen = false; langDropdown.classList.remove("open"); langBtn.setAttribute("aria-expanded","false");
+  }
+  document.addEventListener("click", function(e) {
+    if (!dropdownOpen) return;
+    if (langDropdown && langDropdown.contains(e.target)) return;
+    closeDropdown();
+  });
+  document.addEventListener("keydown", function(e) { if (e.key === "Escape") closeDropdown(); });
+
+  /* GOOGLE TRANSLATE CLEANUP */
+  const killBanner = () => {
+    document.querySelectorAll(".goog-te-banner-frame,iframe.goog-te-banner-frame,.goog-te-balloon-frame,#goog-gt-tt,.skiptranslate > iframe,.goog-te-spinner-pos")
+      .forEach(f => { f.style.cssText = "display:none!important;height:0!important;visibility:hidden!important;"; });
+    if (document.body.style.top && document.body.style.top !== "0px") document.body.style.top = "0px";
+  };
+  killBanner(); setTimeout(killBanner,300); setTimeout(killBanner,800); setTimeout(killBanner,2000);
+  new MutationObserver(killBanner).observe(document.body, { childList: true, subtree: true });
+});
+
+/* SCROLL: progress + header */
+window.addEventListener("scroll", () => {
+  const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+  const bar = document.getElementById("scroll-progress");
+  if (bar) bar.style.width = pct + "%";
+  const header = document.getElementById("main-header");
+  if (header) header.classList.toggle("scrolled", window.scrollY > 60);
+});
+
+/* LANG */
+function getBasePath() {
+  const parts = window.location.pathname.split("/").filter(Boolean);
+  return parts.length > 0 ? "/" + parts[0] + "/" : "/";
+}
+function setGoogTransCookie(lang) {
+  const value = `/en/${lang}`, base = getBasePath();
+  document.cookie = `googtrans=${value};path=/;SameSite=Lax`;
+  document.cookie = `googtrans=${value};path=${base};SameSite=Lax`;
+}
+window.setLang = function(lang) {
+  if (window.__langSwitching) return;
+  window.__langSwitching = true;
+  sessionStorage.setItem("__lang_scroll", window.scrollY);
+  localStorage.setItem("lang", lang);
+  setGoogTransCookie(lang);
+  document.querySelector(".lang-dropdown")?.classList.remove("open");
+  location.reload();
+};
+</script>
+
+<script>
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement(
+      { pageLanguage: "en", includedLanguages: "en,it,de,nl,fr", autoDisplay: false },
+      "google_translate_element"
+    );
+  }
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
-
 </html>

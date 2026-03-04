@@ -1,712 +1,302 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> -->
     <link rel="icon" href="./images/logo.png">
     <title>ANKUR KOHLI - PORTFOLIO</title>
-
-    <!-- Font Awesome icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a9cdbedf57.js" crossorigin="anonymous"></script>
-
-    <!-- Styling CSS -->
-
-    <!-- Style 1 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <link rel="stylesheet" id="themeStylesheet" href="./css/style2.css">
 
+    <script>
+      (function() {
+        var theme = localStorage.getItem("theme");
+        if (theme === "light") document.documentElement.classList.add("light-mode-pre");
+        if (!localStorage.getItem("lang")) localStorage.setItem("lang", "en");
+      })();
+    </script>
+    <style>
+      html.light-mode-pre body { background-color: #faf8f5; color: #1a1614; }
+    </style>
 </head>
-
 <body>
 
-    <header>
+<div id="google_translate_element" style="position:absolute;left:-9999px;visibility:hidden;"></div>
 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<div id="scroll-progress"></div>
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+<div class="noise-overlay"></div>
 
-        <div>
-            <a href="./index.html"><span class="logo">SOFTWARE ENGINEER</span></a>
-        </div>
+<button id="theme-toggle" aria-label="Toggle light/dark mode" title="Toggle Theme">
+    <i class="fa-solid fa-sun" id="theme-icon"></i>
+</button>
 
-        <div class="nav-links">
-            <ul>
-                <li><a href="#home" title="Home" tooltip-bottom small-tooltip>Home</a></li>
-                <li><a href="#career-identity" title="Career Identity" tooltip-bottom small-tooltip>Career Identity</a>
-                </li>
-                <li><a href="#professional-experience" title="Professional Experience" tooltip-bottom
-                        small-tooltip>Professional Experience</a></li>
-                <li><a href="#certification" title="Certification" tooltip-bottom small-tooltip>Certifications</a></li>
-                <li><a href="#projects" title="Projects" tooltip-bottom small-tooltip>Projects</a></li>
-                <li><a href="#publications" title="Publications" tooltip-bottom small-tooltip>Publications</a></li>
-                <li><a href="#contact" title="Contact" tooltip-bottom small-tooltip>Contact</a></li>
-                <!-- setlang button -->
-                <li class="lang-switch lang-dropdown">
-                    <div id="google_translate_element"></div>
+<!-- HEADER -->
+<header id="main-header">
+  <div class="header-inner">
+    <a href="./index.html" class="header-logo">
+      <span class="logo-text">AK</span>
+      <span class="logo-sub">SOFTWARE ENGINEER</span>
+    </a>
+    <nav class="nav-links">
+      <ul>
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#career-identity" class="nav-link">Career Identity</a></li>
+        <li><a href="#professional-experience" class="nav-link">Experience</a></li>
+        <li><a href="#certification" class="nav-link">Certifications</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#publications" class="nav-link">Publications</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+        <li class="lang-switch lang-dropdown">
+          <button class="lang-current" type="button" aria-haspopup="true" aria-expanded="false">🇬🇧 EN</button>
+          <ul class="lang-menu">
+            <li><button type="button" data-lang="en" onclick="setLang('en')">🇬🇧 English</button></li>
+            <li><button type="button" data-lang="it" onclick="setLang('it')">🇮🇹 Italiano</button></li>
+            <li><button type="button" data-lang="de" onclick="setLang('de')">🇩🇪 Deutsch</button></li>
+            <li><button type="button" data-lang="nl" onclick="setLang('nl')">🇳🇱 Nederlands</button></li>
+            <li><button type="button" data-lang="fr" onclick="setLang('fr')">🇫🇷 Français</button></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
-                    <button class="lang-current" type="button" aria-haspopup="true" aria-expanded="false">
-                        🌐
-                    </button>
+<main>
 
-                    <ul class="lang-menu">
-                        <li>
-                            <button type="button" onclick="setLang('en')" data-tooltip="English" tooltip-right
-                                small-tooltip>🇬🇧
-                                English</button>
-                        </li>
-                        <li>
-                            <button type="button" onclick="setLang('it')" data-tooltip="Italiano" tooltip-right
-                                small-tooltip>🇮🇹
-                                Italiano</button>
-                        </li>
-                        <li>
-                            <button type="button" onclick="setLang('de')" data-tooltip="Deutsch" tooltip-right
-                                small-tooltip>🇩🇪
-                                Deutsch</button>
-                        </li>
-                        <li>
-                            <button type="button" onclick="setLang('nl')" data-tooltip="Nederlands" tooltip-right
-                                small-tooltip>🇳🇱
-                                Nederlands</button>
-                        </li>
-                        <li>
-                            <button type="button" onclick="setLang('fr')" data-tooltip="Français" tooltip-right
-                                small-tooltip>🇫🇷
-                                Français</button>
-                        </li>
-                    </ul>
-                </li>
-        </div>
+<!-- HERO -->
+<section class="hero-section" id="home">
+  <canvas id="particles-canvas"></canvas>
+  <div class="hero-grid-lines"><span></span><span></span><span></span><span></span><span></span></div>
 
-    </header>
+  <div class="hero-left" data-aos="fade-right" data-aos-duration="1100">
+    <div class="hero-eyebrow">
+      <span class="eyebrow-line"></span>
+      <span class="eyebrow-text">Available for opportunities</span>
+    </div>
+    <h1 class="hero-name">
+      <span class="name-line">ANKUR</span>
+      <span class="name-line accent">KOHLI</span>
+    </h1>
+    <div class="hero-role">
+      <span class="role-prefix">—</span>
+      <span id="typewriter"></span>
+    </div>
+    <p class="hero-desc">I am a Software Engineer specializing in AI and GenAI/LLM engineering, focused on architecting scalable, intelligent, and high performance systems with clean, production ready architecture. I have hands on experience developing cross platform frontend and realtime, multithreaded backend systems at an Italian MediaTech organization, delivering responsive applications used in real operational environments. With expertise in Python, C/C++, Java, JavaScript, React, Dart (Flutter), and API driven architectures, I design and deploy resilient software across mobile, web, and distributed platforms.
+    <br><br>
+    I have extensive experience engineering realtime distributed systems using Dockerized architectures, ROS2 pipelines, GitLab CI/CD automation, and structured integration workflows, improving system reliability, deployment efficiency, and runtime stability. My work emphasizes modular design, low latency communication, and hardware agnostic scalability, validated through production deployment. I leverage GenAI technologies including LLM, RAG, and LlamaIndex to build intelligent, scalable systems enabling efficient data processing, automation, and secure client server communication.
+    <br><br>
+    I am passionate about developing maintainable software, optimizing backend architectures, and delivering intuitive frontend systems. I value collaboration, disciplined engineering, and continuous improvement, and I am committed to advancing reliable, scalable, and intelligent software through robust integration, automation, and modern software engineering practices.</p>
+    <div class="hero-actions">
+      <a href="mailto:ankurkohli1997007@gmail.com?subject=To book an appointment for the interview.&body=Hello, I'm interested in your profile %26 I would like to discuss more about your background and skills!" class="btn-hire"><span>Hire me</span><i class="fa-solid fa-arrow-right"></i></a>
+      <a href="./cv/CV_Ankur Kohli.pdf" download class="btn-cv"><i class="fa-solid fa-download"></i><span>Download CV</span></a>
+    </div>
+    <div class="hero-socials">
+      <a href="https://www.linkedin.com/in/ankur-kohli-7a5865157/" target="_blank" class="social-pill" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+      <a href="http://www.github.com/ankurkohli007" target="_blank" class="social-pill" title="GitHub"><i class="fa-brands fa-github"></i></a>
+      <a href="https://www.researchgate.net/profile/Ankur-Kohli-4" target="_blank" class="social-pill" title="ResearchGate"><i class="fa-brands fa-researchgate"></i></a>
+      <a href="mailto:ankurkohli1997007@gmail.com?subject=To book an appointment for the interview.&body=Hello, I'm interested in your profile %26 I would like to discuss more about your background and skills!" class="social-pill" title="Gmail"><i class="fa-solid fa-envelope"></i></a>
+    </div>
+  </div>
 
-    <main>
+  <div class="hero-right" data-aos="fade-left" data-aos-duration="1100" data-aos-delay="200">
+    <div class="hero-image-wrapper">
+      <div class="hero-image-ring"></div>
+      <div class="hero-image-ring ring-2"></div>
+      <img src="./images/c1.png" alt="ankur-portfolio" class="hero-portrait">
+      <div class="hero-badge">
+        <span class="badge-number">2+</span>
+        <span class="badge-label">Years<br>Experience</span>
+      </div>
+    </div>
+  </div>
 
-        <!-- Hero Section -->
-        <section class="hero-section" id="home">
+  <div class="scroll-hint">
+    <div class="scroll-mouse"><span class="scroll-wheel"></span></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- CAREER IDENTITY -->
+<section class="career-section" id="career-identity">
+  <div class="career-inner">
+    <div class="career-img-wrap" data-aos="zoom-in" data-aos-duration="900">
+      <div class="career-img-glow"></div>
+      <img src="./images/ci.png" alt="ankur-portfolio">
+    </div>
+    <div class="career-text" data-aos="fade-left" data-aos-duration="900" data-aos-delay="150">
+      <div class="section-tag">— Identity</div>
+      <h2 class="section-title">Career <em>Identity</em></h2>
+      <p class="section-body">Software Engineer with expertise in Python, C/C++, JavaScript, ReactJS, Dart, Flutter, Java, Tailwind CSS &amp; API driven distributed systems, focused on advanced technologies</p>
+      <div class="skill-chips">
+        <span class="chip">Python</span><span class="chip">C/C++</span>
+        <span class="chip">JavaScript</span><span class="chip">ReactJS</span>
+        <span class="chip">Dart</span><span class="chip">Flutter</span>
+        <span class="chip">Java</span><span class="chip">ROS2</span>
+        <span class="chip">Docker</span><span class="chip">LLM / RAG</span>
+        <span class="chip">GenAI</span><span class="chip">GitLab CI/CD</span>
+        <span class="chip">Tailwind CSS</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROFESSIONAL EXPERIENCE -->
+<section class="professional-section" id="professional-experience">
+  <div style="max-width:900px;margin:0 auto;">
+    <div data-aos="fade-down" data-aos-duration="900">
+      <div class="section-tag centered-tag">— Experience</div>
+      <h2 class="section-title centered">Professional <em>Experience</em></h2>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-header">
             <div>
-                <div>
-                    <!-- <h4 title="Hello, How are you?">Hi!</h4> -->
-                    <h2 class="hero-section__title">ANKUR KOHLI <br> <span>Software Engineer</span></h2>
-                    <p class="hero-section__desc" align="justify">I am a Software Engineer specializing in AI and GenAI/LLM engineering, focused on architecting scalable, intelligent, and high performance systems with clean, production ready architecture. I have hands on experience developing cross platform frontend and realtime, multithreaded backend systems at an Italian MediaTech organization, delivering responsive applications used in real operational environments. With expertise in Python, C/C++, Java, JavaScript, React, Dart (Flutter), and API driven architectures, I design and deploy resilient software across mobile, web, and distributed platforms.
-                        <br>
-                        <br>
-                        I have extensive experience engineering realtime distributed systems using Dockerized architectures, ROS2 pipelines, GitLab CI/CD automation, and structured integration workflows, improving system reliability, deployment efficiency, and runtime stability. My work emphasizes modular design, low latency communication, and hardware agnostic scalability, validated through production deployment. I leverage GenAI technologies including LLM, RAG, and LlamaIndex to build intelligent, scalable systems enabling efficient data processing, automation, and secure client server communication.
-                        <br>
-                        <br>
-                        I am passionate about developing maintainable software, optimizing backend architectures, and delivering intuitive frontend systems. I value collaboration, disciplined engineering, and continuous improvement, and I am committed to advancing reliable, scalable, and intelligent software through robust integration, automation, and modern software engineering practices.
-                </div>
-
-                <ul class="social-icons">
-                    <!-- Socials -->
-
-                    <li>
-                        <a target="_blank" href="https://www.linkedin.com/in/ankur-kohli-7a5865157/" title="LinkedIn"
-                            tooltip-top small-tooltip><i class="fa-brands fa-linkedin"></i></a>
-                    </li>
-                    <li>
-                        <a target="_blank" href="http://www.github.com/ankurkohli007" title="GitHub" tooltip-top
-                            small-tooltip><i class="fa-brands fa-github"></i></a>
-                    </li>
-                    <li>
-                        <a target="_blank" href="https://www.researchgate.net/profile/Ankur-Kohli-4"
-                            title="ResearchGate" tooltip-top small-tooltip><i class="fa-brands fa-researchgate"></i></a>
-                    </li>
-                    <li>
-                        <a href="mailto:ankurkohli1997007@gmail.com?subject=To book an appointment for the interview.&body=Hello, I'm interested in your profile %26 I would like to discuss more about your background and skills!"
-                            title="Gmail" tooltip-top small-tooltip><i class="fa-brands fa-envelope"></i></a>
-                    </li>
-                </ul>
-
-                <div class="hero-buttons">
-                    <a href="mailto:ankurkohli1997007@gmail.com?subject=To book an appointment for the interview.&body=Hello, I'm interested in your profile %26 I would like to discuss more about your background and skills!"
-                        class="btn btn-primary" title="Let’s work together!" tooltip-bottom>Hire me</a>
-                    <button class="btn btn-dark-outlined" title="Download CV" tooltip-bottom>
-                        <a href="./cv/CV_Ankur Kohli.pdf" download>Download CV</a>
-                    </button>
-                </div>
+              <div class="timeline-role">Software Engineer</div>
+              <div class="timeline-company">NTT Data Italia <span>· Italy</span></div>
             </div>
-
-            <div class="hero-img">
-                <img src="./images/c1.png" alt="ankur-portfolio" width="350">
-            </div>
-        </section>
-
-        <!-- Career Identiy-->
-        <section class="career-section" id="career-identity">
-
-            <div class="career-img">
-                <img src="./images/ci.png" alt="ankur-portfolio" style="width: 300px; height: auto;">
-            </div>
-
-            <div class="career-content">
-                <h2>Career <span>Identity</span></h2>
-                <p align="justify">
-                    Software Engineer with expertise in Python, C/C++, JavaScript, ReactJS, Dart, Flutter, Java,
-                    Tailwind CSS & API driven distributed systems, focused on advanced technologies
-                </p>
-            </div>
-
-        </section>
-
-        <!-- Professional Experience-->
-        <section class="professional-section" id="professional-experience">
-            <div class="professional-content reverse">
-
-                <div class="right-heading">
-                    <h1>Professional <span>Experience</span></h1>
-                </div>
-
-                <div class="pro_exp1">
-                    <h2>
-                        Software Engineer
-                        <span><em>April 2025 - October 2025</em></span>
-                    </h2>
-                    <h4>
-                        <em>NTT Data Italia</em>
-                        <span><em>Italy</em></span>
-                    </h4>
-
-                    <ul>
-                        <li>Developed and managed cross platform frontends with a UI/UX focus and realtime,
-                            multithreaded backends, enabling secure low latency communication and improving system
-                            responsiveness by 25%.
-                        </li>
-                        <li>Led the development and deployment of an autonomous NAV2 SLAM pipeline using automation
-                            pipelines tested on a real robot, reducing deployment time by 30% and enabling scalable
-                            multiplatform deployment.</li>
-                        <li>Enhanced system reliability through structured integration testing, validation, and
-                            debugging workflows using GitLab CI/CD, which reduced post deployment errors by 40% and
-                            improved runtime stability.</li>
-                        <li>Drove agile cross team collaboration through technical documentation, architectural design,
-                            and specifications, turning research concepts into deployable, high performance systems.
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="pro_exp2">
-                    <h2>
-                        Thesis Project
-                        <span><em>June 2023 - February 2024</em></span>
-                    </h2>
-                    <h4>
-                        <em>NTT Data Italia</em>
-                        <span><em>Italy</em></span>
-                    </h4>
-
-                    <ul>
-                        <li>Developed realtime, multithreaded arch to ensure low latency performance
-                            and improved system efficiency by 30% for intelligent robotic systems.
-                        </li>
-                        <li>Prototyped SLAM-based mapping and navigation pipelines within Dockerized ROS2 environments,
-                            establishing a foundation for scalable CI/CD deployments.</li>
-                        <li>Tested, validated, and debugged software using GitLab CI/CD, increasing system reliability
-                            and uptime by 20%.</li>
-                        <li>Authored comprehensive technical documentation, improving team productivity and
-                            maintainability across projects.</li>
-                    </ul>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Certification -->
-        <section class="certification-section" id="certification">
-            <div class="certification-container">
-                <h2 class="certification-section__title">
-                    <span>Certifications</span>
-                </h2>
-                <p class="certification-section__desc">
-                    Professional certifications and credentials that validate my expertise
-                </p>
-
-                <div class="certifications-grid">
-                    <div class="certification-card">
-                        <div class="certification-card__icon">
-                            <i class="fa-solid fa-certificate"></i>
-                        </div>
-                        <div class="certification-card__content">
-                            <h3 class="certification-card__title">Prompt Design in Vertex AI</h3>
-                            <p class="certification-card__issuer">Google Cloud</p>
-                            <p class="certification-card__date">February 2026</p>
-                        </div>
-                        <div class="certification-card__action">
-                            <a class="btn btn-cert" target="_blank"
-                                href="https://www.skills.google/public_profiles/63ace5e6-2287-48ff-aca5-064f86782cba/badges/21940294">
-                                View Certificate <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="certification-card">
-                        <div class="certification-card__icon">
-                            <i class="fa-solid fa-certificate"></i>
-                        </div>
-                        <div class="certification-card__content">
-                            <h3 class="certification-card__title">Azure Fundamentals</h3>
-                            <p class="certification-card__issuer">Microsoft</p>
-                            <p class="certification-card__date">November 2025</p>
-                        </div>
-                        <div class="certification-card__action">
-                            <a class="btn btn-cert" target="_blank" href="https://simpli-web.app.link/e/tKOHMG7GeYb">
-                                View Certificate <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="certification-card">
-                        <div class="certification-card__icon">
-                            <i class="fa-solid fa-certificate"></i>
-                        </div>
-                        <div class="certification-card__content">
-                            <h3 class="certification-card__title">Introduction to Responsible AI</h3>
-                            <p class="certification-card__issuer">Google Cloud</p>
-                            <p class="certification-card__date">January 2025</p>
-                        </div>
-                        <div class="certification-card__action">
-                            <a class="btn btn-cert" target="_blank"
-                                href="https://www.cloudskillsboost.google/public_profiles/63ace5e6-2287-48ff-aca5-064f86782cba/badges/13507166?utm_medium=social&utm_source=linkedin&utm_campaign=ql-social-share">
-                                View Certificate <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="certification-card">
-                        <div class="certification-card__icon">
-                            <i class="fa-solid fa-certificate"></i>
-                        </div>
-                        <div class="certification-card__content">
-                            <h3 class="certification-card__title">Responsible AI: Applying AI Principles with Google
-                                Cloud</h3>
-                            <p class="certification-card__issuer">Google Cloud</p>
-                            <p class="certification-card__date">January 2025</p>
-                        </div>
-                        <div class="certification-card__action">
-                            <a class="btn btn-cert" target="_blank"
-                                href="https://www.cloudskillsboost.google/public_profiles/63ace5e6-2287-48ff-aca5-064f86782cba/badges/13495736?utm_medium=social&utm_source=linkedin&utm_campaign=ql-social-share">
-                                View Certificate <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="certification-card">
-                        <div class="certification-card__icon">
-                            <i class="fa-solid fa-certificate"></i>
-                        </div>
-                        <div class="certification-card__content">
-                            <h3 class="certification-card__title">Innovating with Google Cloud AI</h3>
-                            <p class="certification-card__issuer">Google Cloud</p>
-                            <p class="certification-card__date">December 2024</p>
-                        </div>
-                        <div class="certification-card__action">
-                            <a class="btn btn-cert" target="_blank" href="https://simpli-web.app.link/e/boA9KtugMPb">
-                                View Certificate <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="certification-card">
-                        <div class="certification-card__icon">
-                            <i class="fa-solid fa-certificate"></i>
-                        </div>
-                        <div class="certification-card__content">
-                            <h3 class="certification-card__title">Introduction to Generative AI</h3>
-                            <p class="certification-card__issuer">Google Cloud</p>
-                            <p class="certification-card__date">October 2024</p>
-                        </div>
-                        <div class="certification-card__action">
-                            <a class="btn btn-cert" target="_blank"
-                                href="https://www.cloudskillsboost.google/public_profiles/63ace5e6-2287-48ff-aca5-064f86782cba/badges/11896058?utm_medium=social&utm_source=linkedin&utm_campaign=ql-social-share">
-                                View Certificate <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="certification-card">
-                        <div class="certification-card__icon">
-                            <i class="fa-solid fa-certificate"></i>
-                        </div>
-                        <div class="certification-card__content">
-                            <h3 class="certification-card__title">Introduction to Machine Learning: Art of the Possible
-                            </h3>
-                            <p class="certification-card__issuer">Amazon Web Services (AWS)</p>
-                            <p class="certification-card__date">September 2024</p>
-                        </div>
-                        <div class="certification-card__action">
-                            <a class="btn btn-cert" target="_blank"
-                                href="https://drive.google.com/file/d/1Q42sW607TAs8WaMWbPqavyP-pwuJlALF/view?usp=drive_link">
-                                View Certificate <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="certification-card">
-                        <div class="certification-card__icon">
-                            <i class="fa-solid fa-certificate"></i>
-                        </div>
-                        <div class="certification-card__content">
-                            <h3 class="certification-card__title">Introduction to Robotics on AWS</h3>
-                            <p class="certification-card__issuer">Amazon Web Services (AWS)</p>
-                            <p class="certification-card__date">September 2024</p>
-                        </div>
-                        <div class="certification-card__action">
-                            <a class="btn btn-cert" target="_blank"
-                                href="https://drive.google.com/file/d/1cqeq7bANf3rbauDSYVsQoTYucI33GeKe/view?usp=drive_link">
-                                View Certificate <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section class="projects-section" id="projects">
-            <h2><span>Projects</span></h2>
-            <div class="projects-cards">
-
-                <div class="projects-card-box">
-                    <div class="projects-card-box__icons">
-                        <i class="fa-solid fa-microchip me-2"></i>
-                    </div>
-                    <div class="projects-card-box__desc">
-                        <h4>ResumeAI: Next-Gen Career Intelligence Platform</h4>
-                        <p align="justify">An AI assisted resume analysis platform built with React.js, Tailwind CSS,
-                            and Puter.js, designed to provide cost efficient ATS style insights. The platform performs
-                            semantic resume job description matching, highlights skill gaps, and generates actionable
-                            improvement suggestions through GenAI integration, with a strong focus on accessibility for
-                            individuals and smaller teams.
-                        </p>
-                    </div>
-                    <div class="projects-card-box__buttons">
-                        <button class="btn btn-dark-outlined" title="View Project" tooltip-bottom>
-                            <a target="_blank" href="https://ankurkohli007.github.io/resumeai-platform/">View
-                                Project <i class="fa-solid fa-external-link"></i></a>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="projects-card-box">
-                    <div class="projects-card-box__icons">
-                        <i class="fa-solid fa-cloud-sun me-2"></i>
-                    </div>
-                    <div class="projects-card-box__desc">
-                        <h4>SkyScope Live Weather Dashboard with API Integration</h4>
-                        <p align="justify">A fully interactive weather platform that delivers real-time forecasts, AQI
-                            metrics, and dynamic visual effects based on live conditions. Developed using JavaScript,
-                            Bootstrap, and Canvas animations, the app adapts its UI to weather and time of day, creating
-                            an engaging and responsive user experience.
-                        </p>
-                    </div>
-                    <div class="projects-card-box__buttons">
-                        <button class="btn btn-dark-outlined" title="View Project" tooltip-bottom>
-                            <a target="_blank"
-                                href="https://ankurkohli007.github.io/SkyScope-WeatherApp-JS_RESTFul-API/">View
-                                Project <i class="fa-solid fa-external-link"></i></a>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="projects-card-box">
-                    <div class="projects-card-box__icons">
-                        <i class="fa-solid fa-gamepad"></i>
-                    </div>
-                    <div class="projects-card-box__desc">
-                        <h4>Interactive Game using JavaScript</h4>
-                        <p align="justify">A lightweight, browser-based Rock-Paper-Scissors game built using plain HTML,
-                            CSS, and JavaScript. The project focuses on simple UI, clean structure, and
-                            beginner-friendly logic that clearly demonstrates DOM manipulation and event handling.
-                        </p>
-                    </div>
-                    <div class="projects-card-box__buttons">
-                        <button class="btn btn-dark-outlined" title="View Project" tooltip-bottom>
-                            <a target="_blank" href="https://ankurkohli007.github.io/rock-paper-scissors-js/">View
-                                Project <i class="fa-solid fa-external-link"></i></a>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="projects-card-box">
-                    <div class="projects-card-box__icons">
-                        <i class="fa-solid fa-lightbulb"></i>
-                    </div>
-                    <div class="projects-card-box__desc">
-                        <h4>Responsive Website Design</h4>
-                        <p align="justify">A Restaurant website developed using HTML, CSS, and some minor functions in
-                            JavaScript, demonstrating front-end development skills and basic web design principles.
-                        </p>
-                    </div>
-                    <div class="projects-card-box__buttons">
-                        <button class="btn btn-dark-outlined" title="View Project" tooltip-bottom>
-                            <a target="_blank"
-                                href="https://ankurkohli007.github.io/Responsive-Website-Design-HTML-CSS-JS/">View
-                                Project <i class="fa-solid fa-external-link"></i></a>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="projects-card-box">
-                    <div class="projects-card-box__icons">
-                        <i class="fa-solid fa-redo"></i>
-                    </div>
-                    <div class="projects-card-box__desc">
-                        <h4>3D reconstruction</h4>
-                        <p align="justify">To developed immersive virtual reality experiences of robotics by capturing
-                            and converting real-world objects or environments into detailed 3D models.
-                        </p>
-                    </div>
-                    <div class="projects-card-box__buttons">
-                        <button class="btn btn-dark-outlined" title="View Project" tooltip-bottom>
-                            <a target="_blank" href="https://youtu.be/3dDWKMFSGl0?si=kdKeFMuSSkVejtp-">View Project on
-                                YouTube <i class="fa-solid fa-external-link"></i></a>
-                            <br>
-                            <a target="_blank"
-                                href="https://github.com/ankurkohli007/Photogrammetry-and-3D-Model-Reconstruction_Virtual-Reality-for-Robotics.git">View
-                                Project on GitHub <i class="fa-solid fa-external-link"></i></a>
-                        </button>
-                    </div>
-
-                </div>
-
-                <div class="projects-card-box">
-                    <div class="projects-card-box__icons">
-                        <i class="fa-solid fa-laptop-medical"></i>
-                    </div>
-                    <div class="projects-card-box__desc">
-                        <h4>Cervical Cancer Detection using CNN & VGG16 Module</h4>
-                        <p align="justify">This work is based on Cervical cancer detection using CNNs involves
-                            leveraging deep learning models like VGG16 to classify cervical cancer in medical images,
-                            such as Pap smear slides, due to its proven effectiveness in image recognition tasks.
-                        </p>
-                    </div>
-                    <div class="projects-card-box__buttons">
-                        <button class="btn btn-dark-outlined" title="View Project" tooltip-bottom>
-                            <a href="https://github.com/ankurkohli007/Cervical-Cancer-Detection-CNNs-VGG16-module-TensorFlow.git"
-                                target="_blank">View Project <i class="fa-solid fa-external-link"></i></a>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="projects-card-box">
-                    <div class="projects-card-box__icons">
-                        <i class="fab fa-steam-symbol"></i>
-                    </div>
-                    <div class="projects-card-box__desc">
-                        <h4>Software Architecture for Mobile Robot Control</h4>
-                        <p align="justify">This project involves developing a software archi- tecture for controlling a
-                            mobile robot by applying graph-based routing and Dijkstra’s. It is based on using ROS,
-                            Gazebo, and RViz to control the robot. Also, it consists of writing ROS nodes in Python: a
-                            controller for the robot and a UI.
-                        </p>
-                    </div>
-                    <div class="projects-card-box__buttons">
-                        <button class="btn btn-dark-outlined" title="View Project" tooltip-bottom>
-                            <a href="https://github.com/ankurkohli007/Research_Track_I_Assignment_3?tab=readme-ov-file#performance-of-mobile-robot-control"
-                                target="_blank">View Project <i class="fa-solid fa-external-link"></i></a>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="projects-card-box">
-                    <div class="projects-card-box__icons">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div class="projects-card-box__desc">
-                        <h4>Reinforcement Learning using A2C Algorithm & PPO Algorithm for Lunar Lander</h4>
-                        <p align="justify">Implemented solutions for the Lunar Lander problem using Advantage
-                            Actor-Critic (A2C) and Proximal Policy Optimization (PPO) algorithms within the framework of
-                            Reinforcement Learning, focusing on optimizing policy by implementing policy iteration
-                            approaches and value functions for efficient and robust lander control.
-                        </p>
-                    </div>
-                    <div class="projects-card-box__buttons">
-                        <button class="btn btn-dark-outlined" title="View Project" tooltip-bottom>
-                            <a href="https://github.com/ankurkohli007/A2C-PPO-Reinforcement-Learning_Machine-Learning-for-Robotics-II#outcomes"
-                                target="_blank">View Project <i class="fa-solid fa-external-link"></i></a>
-                        </button>
-                    </div>
-                </div>
-
-
-                <div class="projects-card-box__buttons">
-                    <button class="btn btn-dark-outlined" title="View all project" tooltip-bottom>
-                        <a href="allprojects.html" target="_blank">View all projects <i
-                                class="fa-solid fa-external-link"></i></a>
-                    </button>
-                </div>
-
-
-            </div>
-        </section>
-
-
-        <!-- Publications Section -->
-        <section class="publications-section" id="publications">
-
-            <!-- Left Side: Image -->
-            <div class="publications-img">
-                <img src="./images/pub.png" alt="ankur-portfolio">
-            </div>
-
-            <!-- Right Side: Circular Gauge -->
-            <div class="publications-content">
-                <h2>Publications</h2>
-
-                <div class="horizontal-values"
-                    style="display: flex; justify-content: space-around; align-items: center; gap: 20px;">
-                    <div class="gauge" style="text-align: center;">
-                        <svg width="100" height="100" viewBox="0 0 100 100">
-                            <circle cx="50" cy="50" r="40" stroke="#ddd" stroke-width="8" fill="none" />
-                            <circle id="circle1" cx="50" cy="50" r="40" stroke="blue" stroke-width="8" fill="none"
-                                stroke-dasharray="251.2" stroke-dashoffset="251.2" stroke-linecap="round" />
-                            <text id="text1a" x="50" y="50" class="value" text-anchor="middle" dy="5" font-size="16"
-                                fill="#000" transform="rotate(90 50 50)">12</text>
-                        </svg>
-                        <a href="https://www.researchgate.net/profile/Ankur-Kohli-4/publications" target="_blank"
-                            style="text-decoration: none; color: blue; font-size: 14px; font-weight: bold;"
-                            title="View Patents" tooltip-bottom small-tooltip>Patents</a>
-                    </div>
-
-                    <div class="gauge" style="text-align: center;">
-                        <svg width="100" height="100" viewBox="0 0 100 100">
-                            <circle cx="50" cy="50" r="40" stroke="#ddd" stroke-width="8" fill="none" />
-                            <circle id="circle2" cx="50" cy="50" r="40" stroke="green" stroke-width="8" fill="none"
-                                stroke-dasharray="251.2" stroke-dashoffset="251.2" stroke-linecap="round" />
-                            <text id="text2a" x="50" y="50" class="value" text-anchor="middle" dy="5" font-size="16"
-                                fill="#000" transform="rotate(90 50 50)">2</text>
-                        </svg>
-                        <a href="https://www.researchgate.net/profile/Ankur-Kohli-4/publications" target="_blank"
-                            style="text-decoration: none; color: green; font-size: 14px; font-weight: bold;"
-                            title="View Book Chapters" tooltip-bottom small-tooltip>Book
-                            Chapters</a>
-                    </div>
-
-                    <div class="gauge" style="text-align: center;">
-                        <svg width="100" height="100" viewBox="0 0 100 100">
-                            <circle cx="50" cy="50" r="40" stroke="#ddd" stroke-width="8" fill="none" />
-                            <circle id="circle3" cx="50" cy="50" r="40" stroke="red" stroke-width="8" fill="none"
-                                stroke-dasharray="251.2" stroke-dashoffset="251.2" stroke-linecap="round" />
-                            <text id="text3a" x="50" y="50" class="value" text-anchor="middle" dy="5" font-size="16"
-                                fill="#000" transform="rotate(90 50 50)">24</text>
-                        </svg>
-                        <a href="https://www.researchgate.net/profile/Ankur-Kohli-4/publications" target="_blank"
-                            style="text-decoration: none; color: red; font-size: 14px; font-weight: bold;"
-                            title="View Conference Papers" tooltip-bottom small-tooltip>Conference
-                            Papers</a>
-                    </div>
-
-                    <div class="gauge" style="text-align: center;">
-                        <svg width="100" height="100" viewBox="0 0 100 100">
-                            <circle cx="50" cy="50" r="40" stroke="#ddd" stroke-width="8" fill="none" />
-                            <circle id="circle4" cx="50" cy="50" r="40" stroke="purple" stroke-width="8" fill="none"
-                                stroke-dasharray="251.2" stroke-dashoffset="251.2" stroke-linecap="round" />
-                            <text id="text4a" x="50" y="50" class="value" text-anchor="middle" dy="5" font-size="16"
-                                fill="#000" transform="rotate(90 50 50)">29</text>
-                        </svg>
-                        <a href="https://www.researchgate.net/profile/Ankur-Kohli-4/publications" target="_blank"
-                            style="text-decoration: none; color: purple; font-size: 14px; font-weight: bold;"
-                            title="View Research Interest Score" tooltip-bottom small-tooltip>Research Interest
-                            Score</a>
-                    </div>
-
-                    <div class="gauge" style="text-align: center;">
-                        <svg width="100" height="100" viewBox="0 0 100 100">
-                            <circle cx="50" cy="50" r="40" stroke="#ddd" stroke-width="8" fill="none" />
-                            <circle id="circle5" cx="50" cy="50" r="40" stroke="orange" stroke-width="8" fill="none"
-                                stroke-dasharray="251.2" stroke-dashoffset="251.2" stroke-linecap="round" />
-                            <text id="text5a" x="50" y="50" class="value" text-anchor="middle" dy="5" font-size="16"
-                                fill="#000" transform="rotate(90 50 50)">3</text>
-                        </svg>
-                        <a href="https://www.researchgate.net/profile/Ankur-Kohli-4/publications" target="_blank"
-                            style="text-decoration: none; color: orange; font-size: 14px; font-weight: bold;"
-                            title="View Citations" tooltip-bottom small-tooltip>Citations</a>
-                    </div>
-
-                    <div class="gauge" style="text-align: center;">
-                        <svg width="100" height="100" viewBox="0 0 100 100">
-                            <circle cx="50" cy="50" r="40" stroke="#ddd" stroke-width="8" fill="none" />
-                            <circle id="circle6" cx="50" cy="50" r="40" stroke="orangered" stroke-width="8" fill="none"
-                                stroke-dasharray="251.2" stroke-dashoffset="251.2" stroke-linecap="round" />
-                            <text id="text6a" x="50" y="50" class="value" text-anchor="middle" dy="5" font-size="16"
-                                fill="#000" transform="rotate(90 50 50)">6</text>
-                        </svg>
-                        <a href="https://www.researchgate.net/profile/Ankur-Kohli-4/publications" target="_blank"
-                            style="text-decoration: none; color: orangered; font-size: 14px; font-weight: bold;"
-                            title="View h-index" tooltip-bottom small-tooltip>h-index</a>
-                    </div>
-                </div>
-
-
-
-
-        </section>
-
-        <!-- JS -->
-        <script src="./js/animation.js"></script>
-
-        <!-- Example of using Polyfill.io -->
-        <script src="https://cdn.polyfill.io/v3/polyfill.min.js"></script>
-
+            <span class="timeline-date">April 2025 - October 2025</span>
+          </div>
+          <ul class="timeline-list">
+            <li>Developed and managed cross platform frontends with a UI/UX focus and realtime, multithreaded backends, enabling secure low latency communication and improving system responsiveness by <strong>25%</strong>.</li>
+            <li>Led the development and deployment of an autonomous NAV2 SLAM pipeline using automation pipelines tested on a real robot, reducing deployment time by <strong>30%</strong> and enabling scalable multiplatform deployment.</li>
+            <li>Enhanced system reliability through structured integration testing, validation, and debugging workflows using GitLab CI/CD, which reduced post deployment errors by <strong>40%</strong> and improved runtime stability.</li>
+            <li>Drove agile cross team collaboration through technical documentation, architectural design, and specifications, turning research concepts into deployable, high performance systems.</li>
+          </ul>
+          <div class="timeline-tags">
+            <span>Physical AI</span><span>Full-Stack</span><span>ReactJS</span><span>Python</span><span>ROS2</span><span>SLAM</span><span>NAV2</span><span>Docker</span><span>GitLab CI/CD</span><span>Flutter</span><span>Dart</span><span>C++</span>
+          </div>
         </div>
-
-        </section>
-
-        <!-- Contact Section -->
-        <section class="contact-section" id="contact">
-            <h2>Contact <span>ME!</span></h2>
-
-            <div class="contact-container">
-                <!-- LinkedIn -->
-                <a class="contact-btn" target="_blank" href="https://www.linkedin.com/in/ankur-kohli-7a5865157/"
-                    title="LinkedIn" tooltip-bottom>
-                    <i class="fa-brands fa-linkedin"></i> LinkedIn
-                </a>
-
-                <!-- Gmail -->
-                <a class="contact-btn" target="_blank"
-                    href="mailto:ankurkohli1997007@gmail.com?subject=To book an appointment for the interview.&body=Hello, I'm interested in your profile %26 I would like to discuss more about your background and skills!"
-                    title="Gmail" tooltip-bottom>
-                    <i class="fa-solid fa-envelope"></i> Gmail
-                </a>
-
-                <!-- Phone -->
-                <a class="contact-btn" href="tel:+39 3452 355 116" title="Phone" tooltip-bottom>
-                    <i class="fa-solid fa-phone"></i> Phone
-                </a>
+      </div>
+      <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-header">
+            <div>
+              <div class="timeline-role">Thesis Project</div>
+              <div class="timeline-company">NTT Data Italia <span>· Italy</span></div>
             </div>
-        </section>
+            <span class="timeline-date">June 2023 - February 2024</span>
+          </div>
+          <ul class="timeline-list">
+            <li>Developed realtime, multithreaded arch to ensure low latency performance and improved system efficiency by <strong>30%</strong> for intelligent robotic systems.</li>
+            <li>Prototyped SLAM-based mapping and navigation pipelines within Dockerized ROS2 environments, establishing a foundation for scalable CI/CD deployments.</li>
+            <li>Tested, validated, and debugged software using GitLab CI/CD, increasing system reliability and uptime by <strong>20%</strong>.</li>
+            <li>Authored comprehensive technical documentation, improving team productivity and maintainability across projects.</li>
+          </ul>
+          <div class="timeline-tags">
+            <span>SLAM</span><span>ROS2</span><span>Physical AI</span><span>Docker</span><span>GitLab CI/CD</span><span>Python</span><span>C++</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    </main>
+<!-- CERTIFICATIONS -->
+<section class="certification-section" id="certification">
+  <div class="section-tag centered-tag" data-aos="fade-down">— Certifications</div>
+  <h2 class="section-title centered" data-aos="fade-down" data-aos-delay="50">Professional <em>Certifications</em></h2>
+  <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Professional certifications and credentials that validate my expertise</p>
+  <div class="certifications-grid">
+    <div class="cert-card" data-aos="fade-up" data-aos-delay="0"><div class="cert-accent"></div><div class="cert-icon"><i class="fa-solid fa-certificate"></i></div><div class="cert-body"><h3>Prompt Design in Vertex AI</h3><p class="cert-issuer">Google Cloud</p><p class="cert-date">February 2026</p></div><a class="cert-link" target="_blank" href="https://www.skills.google/public_profiles/63ace5e6-2287-48ff-aca5-064f86782cba/badges/21940294">View Certificate <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
+    <div class="cert-card" data-aos="fade-up" data-aos-delay="60"><div class="cert-accent"></div><div class="cert-icon"><i class="fa-solid fa-certificate"></i></div><div class="cert-body"><h3>Azure Fundamentals</h3><p class="cert-issuer">Microsoft</p><p class="cert-date">November 2025</p></div><a class="cert-link" target="_blank" href="https://simpli-web.app.link/e/tKOHMG7GeYb">View Certificate <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
+    <div class="cert-card" data-aos="fade-up" data-aos-delay="120"><div class="cert-accent"></div><div class="cert-icon"><i class="fa-solid fa-certificate"></i></div><div class="cert-body"><h3>Introduction to Responsible AI</h3><p class="cert-issuer">Google Cloud</p><p class="cert-date">January 2025</p></div><a class="cert-link" target="_blank" href="https://www.cloudskillsboost.google/public_profiles/63ace5e6-2287-48ff-aca5-064f86782cba/badges/13507166">View Certificate <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
+    <div class="cert-card" data-aos="fade-up" data-aos-delay="180"><div class="cert-accent"></div><div class="cert-icon"><i class="fa-solid fa-certificate"></i></div><div class="cert-body"><h3>Responsible AI: Applying AI Principles with Google Cloud</h3><p class="cert-issuer">Google Cloud</p><p class="cert-date">January 2025</p></div><a class="cert-link" target="_blank" href="https://www.cloudskillsboost.google/public_profiles/63ace5e6-2287-48ff-aca5-064f86782cba/badges/13495736">View Certificate <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
+    <div class="cert-card" data-aos="fade-up" data-aos-delay="240"><div class="cert-accent"></div><div class="cert-icon"><i class="fa-solid fa-certificate"></i></div><div class="cert-body"><h3>Innovating with Google Cloud AI</h3><p class="cert-issuer">Google Cloud</p><p class="cert-date">December 2024</p></div><a class="cert-link" target="_blank" href="https://simpli-web.app.link/e/boA9KtugMPb">View Certificate <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
+    <div class="cert-card" data-aos="fade-up" data-aos-delay="300"><div class="cert-accent"></div><div class="cert-icon"><i class="fa-solid fa-certificate"></i></div><div class="cert-body"><h3>Introduction to Generative AI</h3><p class="cert-issuer">Google Cloud</p><p class="cert-date">October 2024</p></div><a class="cert-link" target="_blank" href="https://www.cloudskillsboost.google/public_profiles/63ace5e6-2287-48ff-aca5-064f86782cba/badges/11896058">View Certificate <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
+    <div class="cert-card" data-aos="fade-up" data-aos-delay="360"><div class="cert-accent"></div><div class="cert-icon"><i class="fa-solid fa-certificate"></i></div><div class="cert-body"><h3>Introduction to Machine Learning: Art of the Possible</h3><p class="cert-issuer">Amazon Web Services (AWS)</p><p class="cert-date">September 2024</p></div><a class="cert-link" target="_blank" href="https://drive.google.com/file/d/1Q42sW607TAs8WaMWbPqavyP-pwuJlALF/view?usp=drive_link">View Certificate <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
+    <div class="cert-card" data-aos="fade-up" data-aos-delay="420"><div class="cert-accent"></div><div class="cert-icon"><i class="fa-solid fa-certificate"></i></div><div class="cert-body"><h3>Introduction to Robotics on AWS</h3><p class="cert-issuer">Amazon Web Services (AWS)</p><p class="cert-date">September 2024</p></div><a class="cert-link" target="_blank" href="https://drive.google.com/file/d/1cqeq7bANf3rbauDSYVsQoTYucI33GeKe/view?usp=drive_link">View Certificate <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
+  </div>
+</section>
 
-    <footer>
-        <p>Copyright &copy; 2026 - <a href="https://ankurkohli007.github.io/PORTFOLIO-ANKUR-on-HTML-CSS-and-JavaScript/"
-                target="_blank">Ankur Kohli</a> - All
-            Rights
-            Reserved.</p>
-        <!-- <div class="footer-buttons">
-            <button data-theme="./css/style1.css" class="footer__theme1 active-theme" title="Style 1" tooltip-top>Style
-                1</button>
-            <button data-theme="./css/style2.css" class="footer__theme2" title="Style 2" tooltip-top>Style 2</button>
-        </div> -->
+<!-- PROJECTS -->
+<section class="projects-section" id="projects">
+  <div class="section-tag centered-tag" data-aos="fade-down">— Extra Curricular Experience</div>
+  <h2 class="section-title centered" data-aos="fade-up" data-aos-delay="50">Projects <em>Experience</em></h2>
+  <div class="projects-grid">
+    <div class="project-card featured" data-aos="fade-up" data-aos-delay="0"><div class="project-number">01</div><div class="project-icon"><i class="fa-solid fa-microchip"></i></div><h3>ResumeAI: Next-Gen Career Intelligence Platform</h3><p>An AI assisted resume analysis platform built with React.js, Tailwind CSS, and Puter.js, designed to provide cost efficient ATS style insights. The platform performs semantic resume job description matching, highlights skill gaps, and generates actionable improvement suggestions through GenAI integration, with a strong focus on accessibility for individuals and smaller teams.</p><div class="project-tech"><span>React</span><span>Tailwind</span><span>GenAI</span><span>Puter.js</span></div><a target="_blank" href="https://ankurkohli007.github.io/resumeai-platform/" class="project-link">View Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
+    <div class="project-card" data-aos="fade-up" data-aos-delay="80"><div class="project-number">02</div><div class="project-icon"><i class="fa-solid fa-cloud-sun"></i></div><h3>SkyScope Live Weather Dashboard with API Integration</h3><p>A fully interactive weather platform that delivers real-time forecasts, AQI metrics, and dynamic visual effects based on live conditions. Developed using JavaScript, Bootstrap, and Canvas animations, the app adapts its UI to weather and time of day, creating an engaging and responsive user experience.</p><div class="project-tech"><span>JavaScript</span><span>Bootstrap</span><span>REST API</span><span>Canvas</span></div><a target="_blank" href="https://ankurkohli007.github.io/SkyScope-WeatherApp-JS_RESTFul-API/" class="project-link">View Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
+    <div class="project-card" data-aos="fade-up" data-aos-delay="160"><div class="project-number">03</div><div class="project-icon"><i class="fa-solid fa-gamepad"></i></div><h3>Interactive Game using JavaScript</h3><p>A lightweight, browser-based Rock-Paper-Scissors game built using plain HTML, CSS, and JavaScript. The project focuses on simple UI, clean structure, and beginner-friendly logic that clearly demonstrates DOM manipulation and event handling.</p><div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span></div><a target="_blank" href="https://ankurkohli007.github.io/rock-paper-scissors-js/" class="project-link">View Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
+    <div class="project-card" data-aos="fade-up" data-aos-delay="240"><div class="project-number">04</div><div class="project-icon"><i class="fa-solid fa-lightbulb"></i></div><h3>Responsive Website Design</h3><p>A Restaurant website developed using HTML, CSS, and some minor functions in JavaScript, demonstrating front-end development skills and basic web design principles.</p><div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span></div><a target="_blank" href="https://ankurkohli007.github.io/Responsive-Website-Design-HTML-CSS-JS/" class="project-link">View Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
+    <div class="project-card" data-aos="fade-up" data-aos-delay="320"><div class="project-number">05</div><div class="project-icon"><i class="fa-solid fa-redo"></i></div><h3>3D reconstruction</h3><p>To developed immersive virtual reality experiences of robotics by capturing and converting real-world objects or environments into detailed 3D models.</p><div class="project-tech"><span>3D Modeling</span><span>VR</span><span>Photogrammetry</span></div><div style="display:flex;gap:0.5rem;flex-wrap:wrap;"><a target="_blank" href="https://youtu.be/3dDWKMFSGl0?si=kdKeFMuSSkVejtp-" class="project-link">View on YouTube <i class="fa-solid fa-arrow-up-right-from-square"></i></a><a target="_blank" href="https://github.com/ankurkohli007/Photogrammetry-and-3D-Model-Reconstruction_Virtual-Reality-for-Robotics.git" class="project-link">View on GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></div>
+    <div class="project-card" data-aos="fade-up" data-aos-delay="400"><div class="project-number">06</div><div class="project-icon"><i class="fa-solid fa-laptop-medical"></i></div><h3>Cervical Cancer Detection using CNN &amp; VGG16 Module</h3><p>Leveraging deep learning models like VGG16 to classify cervical cancer in medical images, such as Pap smear slides, due to its proven effectiveness in image recognition tasks.</p><div class="project-tech"><span>Python</span><span>TensorFlow</span><span>VGG16</span><span>CNN</span></div><a href="https://github.com/ankurkohli007/Cervical-Cancer-Detection-CNNs-VGG16-module-TensorFlow.git" target="_blank" class="project-link">View Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
+    <div class="project-card" data-aos="fade-up" data-aos-delay="480"><div class="project-number">07</div><div class="project-icon"><i class="fab fa-steam-symbol"></i></div><h3>Software Architecture for Mobile Robot Control</h3><p>Developing a software architecture for controlling a mobile robot by applying graph-based routing and Dijkstra's, using ROS, Gazebo, and RViz. Includes ROS nodes in Python: a controller and a UI.</p><div class="project-tech"><span>ROS</span><span>Python</span><span>Gazebo</span><span>RViz</span></div><a href="https://github.com/ankurkohli007/Research_Track_I_Assignment_3?tab=readme-ov-file" target="_blank" class="project-link">View Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
+    <div class="project-card" data-aos="fade-up" data-aos-delay="560"><div class="project-number">08</div><div class="project-icon"><i class="fas fa-chart-line"></i></div><h3>Reinforcement Learning using A2C &amp; PPO for Lunar Lander</h3><p>Implemented solutions for the Lunar Lander problem using Advantage Actor-Critic (A2C) and Proximal Policy Optimization (PPO) algorithms, focusing on optimizing policy via policy iteration approaches and value functions.</p><div class="project-tech"><span>Python</span><span>RL</span><span>A2C</span><span>PPO</span></div><a href="https://github.com/ankurkohli007/A2C-PPO-Reinforcement-Learning_Machine-Learning-for-Robotics-II" target="_blank" class="project-link">View Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
+  </div>
+  <div class="projects-cta" data-aos="fade-up" data-aos-delay="640">
+    <a href="allprojects.html" target="_blank" class="btn-outline-pill">View all projects &nbsp;<i class="fa-solid fa-arrow-right"></i></a>
+  </div>
+</section>
 
-    </footer>
+<!-- PUBLICATIONS -->
+<section class="publications-section" id="publications">
+    <div class="publications-img" data-aos="zoom-in" data-aos-duration="900">
+        <img src="./images/pub.png" alt="ankur-portfolio">
+    </div>
+    <div class="publications-content" data-aos="fade-left" data-aos-duration="900">
+        <div class="section-tag">— Research Profile</div>
+        <h2 class="section-title">Publications</h2>
+        <div class="horizontal-values">
+            <div class="gauge" style="text-align:center;"><svg width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" stroke="#333" stroke-width="8" fill="none"/><circle id="circle1" cx="50" cy="50" r="40" stroke="blue" stroke-width="8" fill="none" stroke-dasharray="251.2" stroke-dashoffset="251.2" stroke-linecap="round"/><text id="text1a" x="50" y="50" class="value" text-anchor="middle" dy="5" font-size="16" fill="#fff" transform="rotate(90 50 50)">12</text></svg><a href="https://www.researchgate.net/profile/Ankur-Kohli-4/publications" target="_blank" style="text-decoration:none;color:#4f8ef7;font-size:14px;font-weight:bold;">Patents</a></div>
+            <div class="gauge" style="text-align:center;"><svg width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" stroke="#333" stroke-width="8" fill="none"/><circle id="circle2" cx="50" cy="50" r="40" stroke="green" stroke-width="8" fill="none" stroke-dasharray="251.2" stroke-dashoffset="251.2" stroke-linecap="round"/><text id="text2a" x="50" y="50" class="value" text-anchor="middle" dy="5" font-size="16" fill="#fff" transform="rotate(90 50 50)">2</text></svg><a href="https://www.researchgate.net/profile/Ankur-Kohli-4/publications" target="_blank" style="text-decoration:none;color:green;font-size:14px;font-weight:bold;">Book Chapters</a></div>
+            <div class="gauge" style="text-align:center;"><svg width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" stroke="#333" stroke-width="8" fill="none"/><circle id="circle3" cx="50" cy="50" r="40" stroke="red" stroke-width="8" fill="none" stroke-dasharray="251.2" stroke-dashoffset="251.2" stroke-linecap="round"/><text id="text3a" x="50" y="50" class="value" text-anchor="middle" dy="5" font-size="16" fill="#fff" transform="rotate(90 50 50)">24</text></svg><a href="https://www.researchgate.net/profile/Ankur-Kohli-4/publications" target="_blank" style="text-decoration:none;color:red;font-size:14px;font-weight:bold;">Conference Papers</a></div>
+            <div class="gauge" style="text-align:center;"><svg width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" stroke="#333" stroke-width="8" fill="none"/><circle id="circle4" cx="50" cy="50" r="40" stroke="purple" stroke-width="8" fill="none" stroke-dasharray="251.2" stroke-dashoffset="251.2" stroke-linecap="round"/><text id="text4a" x="50" y="50" class="value" text-anchor="middle" dy="5" font-size="16" fill="#fff" transform="rotate(90 50 50)">29</text></svg><a href="https://www.researchgate.net/profile/Ankur-Kohli-4/publications" target="_blank" style="text-decoration:none;color:purple;font-size:14px;font-weight:bold;">Research Interest Score</a></div>
+            <div class="gauge" style="text-align:center;"><svg width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" stroke="#333" stroke-width="8" fill="none"/><circle id="circle5" cx="50" cy="50" r="40" stroke="orange" stroke-width="8" fill="none" stroke-dasharray="251.2" stroke-dashoffset="251.2" stroke-linecap="round"/><text id="text5a" x="50" y="50" class="value" text-anchor="middle" dy="5" font-size="16" fill="#fff" transform="rotate(90 50 50)">3</text></svg><a href="https://www.researchgate.net/profile/Ankur-Kohli-4/publications" target="_blank" style="text-decoration:none;color:orange;font-size:14px;font-weight:bold;">Citations</a></div>
+            <div class="gauge" style="text-align:center;"><svg width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" stroke="#333" stroke-width="8" fill="none"/><circle id="circle6" cx="50" cy="50" r="40" stroke="orangered" stroke-width="8" fill="none" stroke-dasharray="251.2" stroke-dashoffset="251.2" stroke-linecap="round"/><text id="text6a" x="50" y="50" class="value" text-anchor="middle" dy="5" font-size="16" fill="#fff" transform="rotate(90 50 50)">6</text></svg><a href="https://www.researchgate.net/profile/Ankur-Kohli-4/publications" target="_blank" style="text-decoration:none;color:orangered;font-size:14px;font-weight:bold;">h-index</a></div>
+        </div>
+    </div>
+</section>
 
-    <!-- JS -->
-    <script src="./js/script.js"></script>
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="section-tag centered-tag" data-aos="fade-down">— Connect</div>
+  <div class="contact-inner" data-aos="fade-up" data-aos-duration="900" data-aos-delay="50">
+    <h2 class="contact-heading">Contact <br><em>ME!</em></h2>
+    <p class="contact-sub">Open to full-time roles, freelance projects, and research collaborations.</p>
+    <div class="contact-cards">
+      <a class="contact-card" target="_blank" href="https://www.linkedin.com/in/ankur-kohli-7a5865157/"><div class="contact-card-icon"><i class="fa-brands fa-linkedin"></i></div><span>LinkedIn</span><i class="fa-solid fa-arrow-up-right-from-square contact-arrow"></i></a>
+      <a class="contact-card" target="_blank" href="mailto:ankurkohli1997007@gmail.com?subject=To book an appointment for the interview.&body=Hello, I'm interested in your profile %26 I would like to discuss more about your background and skills!"><div class="contact-card-icon"><i class="fa-solid fa-envelope"></i></div><span>Gmail</span><i class="fa-solid fa-arrow-up-right-from-square contact-arrow"></i></a>
+      <a class="contact-card" href="tel:+39 3452 355 116"><div class="contact-card-icon"><i class="fa-solid fa-phone"></i></div><span>Phone</span><i class="fa-solid fa-arrow-up-right-from-square contact-arrow"></i></a>
+    </div>
+  </div>
+</section>
 
-    <!-- setlang -->
-    <script>
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement(
-                { pageLanguage: "en", includedLanguages: "en,it,de,nl,fr", autoDisplay: false },
-                "google_translate_element"
-            );
-        }
-    </script>
-    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</main>
 
+<footer>
+  <div class="footer-inner">
+    <span class="footer-logo">AK</span>
+    <p>Copyright &copy; 2026 - <a href="https://ankurkohli007.github.io/PORTFOLIO-ANKUR-on-HTML-CSS-and-JavaScript/" target="_blank">Ankur Kohli</a> - All Rights Reserved.</p>
+    <div class="footer-socials">
+      <a href="http://www.github.com/ankurkohli007" target="_blank"><i class="fa-brands fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/ankur-kohli-7a5865157/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="./js/animation.js"></script>
+<script src="./js/script.js"></script>
+<script src="https://cdn.polyfill.io/v3/polyfill.min.js"></script>
+<script>
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+            { pageLanguage: "en", includedLanguages: "en,it,de,nl,fr", autoDisplay: false },
+            "google_translate_element"
+        );
+    }
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
-
 </html>
