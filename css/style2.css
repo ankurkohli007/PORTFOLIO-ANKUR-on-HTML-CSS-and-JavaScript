@@ -939,3 +939,619 @@ html, body { margin-top: 0 !important; }
   #theme-toggle { bottom: 1.25rem; right: 1.25rem; width: 42px; height: 42px; }
   .gauge { width: 100px; height: 80px; }
 }
+
+/* 
+   GIF DEMO GALLERY 
+*/
+
+   .gif-gallery-section {
+    background: var(--bg-dark);
+    padding: clamp(5rem, 10vh, 7rem) clamp(1.5rem, 6vw, 6rem);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  
+  .gif-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    max-width: 1200px;
+    margin: 3rem auto 0;
+  }
+  
+  .gif-tile {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: #000;
+    aspect-ratio: 16 / 9;
+    cursor: pointer;
+    transition: border-color 0.3s ease, transform 0.35s ease, box-shadow 0.35s ease;
+  }
+  
+  .gif-tile:hover {
+    border-color: var(--red-border);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 0 1px var(--red-border);
+    z-index: 2;
+  }
+  
+  body.light-mode .gif-tile:hover {
+    box-shadow: 0 20px 50px rgba(0,0,0,0.12), 0 0 0 1px var(--red-border);
+  }
+  
+  .gif-tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: filter 0.4s ease;
+    filter: brightness(0.78) saturate(0.8);
+  }
+  
+  .gif-tile:hover img {
+    filter: brightness(1) saturate(1);
+  }
+  
+  .gif-tile-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 0.875rem;
+    background: linear-gradient(135deg, rgba(0,0,0,0.38) 0%, transparent 65%);
+    transition: background 0.35s;
+  }
+  
+  .gif-tile:hover .gif-tile-overlay {
+    background: linear-gradient(135deg, rgba(0,0,0,0.1) 0%, transparent 50%);
+  }
+  
+  .gif-tile-number {
+    font-family: var(--font-display);
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 1px;
+    transition: color 0.3s;
+  }
+  
+  .gif-tile:hover .gif-tile-number {
+    color: rgba(255,255,255,0.9);
+  }
+  
+  .gif-tile-expand {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(8,8,8,0.6);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.75);
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-end;
+    transition: background 0.3s, border-color 0.3s, transform 0.3s, color 0.3s, box-shadow 0.3s;
+  }
+  
+  .gif-tile:hover .gif-tile-expand {
+    background: var(--red);
+    border-color: var(--red);
+    color: #fff;
+    transform: scale(1.15);
+    box-shadow: 0 4px 18px var(--red-glow);
+  }
+  
+  .gif-tile::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--red), transparent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+    z-index: 3;
+  }
+  
+  .gif-tile:hover::before {
+    transform: scaleX(1);
+  }
+  
+  /* ── LIGHTBOX ── */
+  .gif-lightbox-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(3,3,3,0.94);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 99000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+  }
+  
+  body.light-mode .gif-lightbox-backdrop {
+    background: rgba(220,215,208,0.93);
+  }
+  
+  .gif-lightbox-backdrop.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .gif-lightbox {
+    position: relative;
+    width: 100%;
+    max-width: 960px;
+    background: var(--bg-card);
+    border: 1px solid var(--red-border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 50px 120px rgba(0,0,0,0.8);
+    transform: scale(0.96) translateY(24px);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .gif-lightbox-backdrop.active .gif-lightbox {
+    transform: scale(1) translateY(0);
+  }
+  
+  .gif-lightbox::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--red), #ff8a80, transparent);
+    z-index: 1;
+  }
+  
+  .gif-lightbox-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.875rem 1.25rem;
+    background: var(--bg-dark);
+    border-bottom: 1px solid var(--border);
+  }
+  
+  .gif-lightbox-counter {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+  
+  .gif-lightbox-counter span {
+    color: var(--red);
+    font-weight: 700;
+  }
+  
+  .gif-lightbox-close {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: var(--transition);
+  }
+  
+  .gif-lightbox-close:hover {
+    background: var(--red);
+    border-color: var(--red);
+    color: #fff;
+    transform: rotate(90deg);
+  }
+  
+  .gif-lightbox-body {
+    position: relative;
+    background: #000;
+    line-height: 0;
+    min-height: 200px;
+  }
+  
+  .gif-lightbox-body img {
+    width: 100%;
+    max-height: 560px;
+    object-fit: contain;
+    display: block;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .gif-lightbox-body.loading::after {
+    content: '';
+    position: absolute; inset: 0; z-index: 2;
+    background: linear-gradient(90deg,
+      var(--bg-card) 25%, var(--bg-card-hover) 50%, var(--bg-card) 75%);
+    background-size: 200% 100%;
+    animation: gif-shimmer 1.2s infinite;
+  }
+  
+  @keyframes gif-shimmer {
+    0%   { background-position: -200% 0; }
+    100% { background-position:  200% 0; }
+  }
+  
+  body.light-mode .gif-lightbox-body { background: #eae6e0; }
+  
+  .gif-lightbox-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.875rem 1.25rem;
+    background: var(--bg-dark);
+    border-top: 1px solid var(--border);
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .gif-lightbox-nav { display: flex; gap: 0.5rem; }
+  
+  .gif-nav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 7px 16px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  
+  .gif-nav-btn:hover:not(:disabled) {
+    border-color: var(--red);
+    color: var(--red);
+  }
+  
+  .gif-nav-btn:disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
+  }
+  
+  .gif-lightbox-dots {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+  }
+  
+  .gif-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--border);
+    border: 1px solid var(--text-muted);
+    cursor: pointer;
+    transition: background 0.25s, transform 0.25s;
+  }
+  
+  .gif-dot.active {
+    background: var(--red);
+    border-color: var(--red);
+    transform: scale(1.4);
+  }
+  
+  .gif-lightbox-hint {
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    color: var(--text-muted);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  
+  .gif-lightbox-hint kbd {
+    display: inline-block;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 1px 5px;
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    margin: 0 1px;
+  }
+  
+  @media (max-width: 900px) {
+    .gif-gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 580px) {
+    .gif-gallery-grid { grid-template-columns: 1fr; }
+    .gif-lightbox-hint { display: none; }
+    .gif-lightbox-body img { max-height: 320px; }
+  }
+
+/* 
+   GIF QUALITY ENHANCEMENT   
+*/
+
+/* ── Force crisp, high-quality rendering on all GIF images ── */
+.gif-tile img,
+.gif-lightbox-body img {
+  image-rendering: -webkit-optimize-contrast; /* Safari */
+  image-rendering: crisp-edges;               /* Firefox */
+  image-rendering: high-quality;              /* Chrome/Edge */
+  -ms-interpolation-mode: bicubic;            /* IE fallback */
+  transform: translateZ(0);                   /* GPU layer — prevents blurring */
+  backface-visibility: hidden;                /* eliminates sub-pixel blur */
+  -webkit-backface-visibility: hidden;
+  will-change: transform;                     /* signals GPU to keep sharp */
+}
+
+/* ── Lightbox image — force full native resolution ── */
+.gif-lightbox-body img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  max-height: 560px;
+  object-fit: contain;
+  /* remove any browser-side downsampling */
+  image-rendering: auto;
+}
+
+/* ── Grid tile — no downscaling artifacts ── */
+.gif-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* prevent browser from applying lossy resize filter */
+  image-rendering: auto;
+}
+
+/* ── Lightbox body: black bg makes colours pop more ── */
+.gif-lightbox-body {
+  background: #000;
+}
+
+/* ── Remove brightness/saturation filter in lightbox
+      so the gif shows at its true colours, not dimmed ── */
+.gif-lightbox-body img {
+  filter: none !important;
+}
+
+/* ── Grid tile: only dim slightly, not aggressively ── */
+.gif-tile img {
+  filter: brightness(0.92) saturate(0.95);
+}
+
+.gif-tile:hover img {
+  filter: brightness(1) saturate(1);
+}
+
+/* 
+   GIF GALLERY — ENHANCED RESPONSIVENESS
+*/
+
+/* ── BASE: Desktop large (1400px+) — 3 columns, tall tiles ── */
+@media (min-width: 1400px) {
+  .gif-gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+  .gif-tile {
+    aspect-ratio: 16 / 9;
+  }
+  .gif-lightbox-body img {
+    max-height: 620px;
+  }
+}
+
+/* ── Desktop normal (1024px – 1399px) — 3 columns ── */
+@media (min-width: 1024px) and (max-width: 1399px) {
+  .gif-gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .gif-tile {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+/* ── Laptop / small desktop (768px – 1023px) — 2 columns ── */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .gif-gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.875rem;
+  }
+  .gif-tile {
+    aspect-ratio: 16 / 9;
+  }
+  .gif-lightbox-body img {
+    max-height: 420px;
+  }
+  .gif-lightbox {
+    max-width: 92vw;
+  }
+}
+
+/* ── Tablet portrait (600px – 767px) — 2 columns ── */
+@media (min-width: 600px) and (max-width: 767px) {
+  .gif-gallery-section {
+    padding: 4rem clamp(1rem, 4vw, 2.5rem);
+  }
+  .gif-gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+  .gif-tile {
+    aspect-ratio: 4 / 3;
+  }
+  .gif-lightbox {
+    max-width: 96vw;
+  }
+  .gif-lightbox-body img {
+    max-height: 340px;
+  }
+  .gif-lightbox-footer {
+    padding: 0.75rem 1rem;
+    gap: 0.5rem;
+  }
+  .gif-lightbox-hint { display: none; }
+}
+
+/* ── Mobile large (480px – 599px) — 1 column ── */
+@media (min-width: 480px) and (max-width: 599px) {
+  .gif-gallery-section {
+    padding: 3.5rem 1.25rem;
+  }
+  .gif-gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    margin-top: 1.75rem;
+  }
+  .gif-tile {
+    aspect-ratio: 16 / 9;
+  }
+  .gif-lightbox {
+    max-width: 98vw;
+    border-radius: 10px;
+  }
+  .gif-lightbox-body img {
+    max-height: 280px;
+  }
+  .gif-lightbox-bar,
+  .gif-lightbox-footer {
+    padding: 0.75rem;
+  }
+  .gif-lightbox-hint { display: none; }
+  .gif-lightbox-counter { font-size: 0.6rem; }
+  .gif-nav-btn { padding: 6px 12px; font-size: 0.6rem; }
+}
+
+/* ── Mobile small (below 480px) — 1 column, compact ── */
+@media (max-width: 479px) {
+  .gif-gallery-section {
+    padding: 3rem 1rem;
+  }
+  .gif-gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+    margin-top: 1.5rem;
+  }
+  .gif-tile {
+    aspect-ratio: 16 / 9;
+    border-radius: 8px;
+  }
+  .gif-tile-expand {
+    width: 30px;
+    height: 30px;
+    font-size: 0.7rem;
+  }
+  .gif-tile-number {
+    font-size: 0.6rem;
+  }
+  .gif-lightbox-backdrop {
+    padding: 0;
+    align-items: flex-end;
+  }
+  .gif-lightbox {
+    max-width: 100vw;
+    border-radius: 14px 14px 0 0;
+  }
+  .gif-lightbox-body img {
+    max-height: 52vw;
+    min-height: 180px;
+  }
+  .gif-lightbox-bar,
+  .gif-lightbox-footer {
+    padding: 0.65rem 0.875rem;
+  }
+  .gif-lightbox-hint { display: none; }
+  .gif-lightbox-dots { display: none; }
+  .gif-nav-btn { padding: 6px 10px; font-size: 0.58rem; }
+}
+
+/* ── Ultra-wide / projector (1800px+) — 3 columns with more breathing room ── */
+@media (min-width: 1800px) {
+  .gif-gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 1500px;
+  }
+  .gif-lightbox {
+    max-width: 1100px;
+  }
+  .gif-lightbox-body img {
+    max-height: 700px;
+  }
+}
+
+/* ── Canvas element (gifler speed boost) — match img styles ── */
+.gif-tile canvas {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.92) saturate(0.95);
+  transition: filter 0.4s ease;
+  image-rendering: auto;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.gif-tile:hover canvas {
+  filter: brightness(1) saturate(1);
+}
+
+.gif-lightbox-body canvas {
+  width: 100% !important;
+  max-height: 560px;
+  object-fit: contain;
+  display: block;
+  filter: none !important;
+  image-rendering: auto;
+  transform: translateZ(0);
+}
+
+/* ── Touch devices: remove hover effects, use tap ── */
+@media (hover: none) and (pointer: coarse) {
+  .gif-tile:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  .gif-tile:active {
+    transform: scale(0.97);
+    border-color: var(--red-border);
+  }
+  .gif-tile img,
+  .gif-tile canvas {
+    filter: brightness(1) saturate(1); /* always full brightness on touch */
+  }
+  .gif-tile-expand {
+    background: rgba(255,85,85,0.75);
+    border-color: var(--red);
+    color: #fff;
+  }
+}
+
+/* ── Landscape phone ── */
+@media (max-height: 500px) and (orientation: landscape) {
+  .gif-lightbox-backdrop {
+    align-items: center;
+    padding: 0.5rem;
+  }
+  .gif-lightbox-body img {
+    max-height: 55vh;
+  }
+  .gif-lightbox-bar,
+  .gif-lightbox-footer {
+    padding: 0.5rem 1rem;
+  }
+  .gif-lightbox-hint { display: none; }
+}
