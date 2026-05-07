@@ -560,3 +560,51 @@ window.setLang = function (lang) {
     });
   
   })();
+
+  /* 
+   SKILLS SECTION ANIMATION
+   Animate skill bars when they come into view
+*/
+
+(function () {
+  
+  const skillFills = document.querySelectorAll(".skill-fill");
+  const skillSection = document.querySelector(".skills-section");
+  
+  if (!skillFills.length || !skillSection) return;
+  
+  const observerOptions = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.2
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !entry.target.classList.contains("animated")) {
+        // Mark the skill bar as animated
+        entry.target.classList.add("animated");
+        
+        // Trigger the animation
+        const width = entry.target.getAttribute("data-width") || entry.target.style.width;
+        entry.target.style.width = "0";
+        
+        // Force reflow to trigger animation
+        void entry.target.offsetWidth;
+        
+        // Apply the width value and animation
+        entry.target.style.transition = "width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+        entry.target.style.width = width;
+        
+        // Stop observing this element
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+  
+  // Observe all skill bars
+  skillFills.forEach(fill => {
+    observer.observe(fill);
+  });
+  
+})();
