@@ -1,10 +1,10 @@
 # ANKUR KOHLI - PORFOLIO
 
-Welcome to my portfolio! This repository showcases my skills, projects, and experience in **Artificial Intelligence, Machine Learning, Reinforcement Learning, Deep Learning, Robotics, Computer Visio, & Frontend Developement**. I'm a Aspiring Software Engineer passionate about **AI, ML, RL, DL, Robotics, CV, Frontend Development**.
+Welcome to my portfolio! This repository showcases my skills, projects, and experience in **Artificial Intelligence, GenAI, Machine Learning, Reinforcement Learning, Deep Learning, Robotics, Computer Visio, Frontend Developement, Backend Development, & Full-Stack Development**. I'm a Aspiring Software Engineer passionate about **AI, ML, RL, DL, Robotics, CV, Frontend Development**.
 
 ## About Me
 
-I'm recent graduate in [M.Sc Robotics Engineering](https://corsi.unige.it/corsi/10635) from [University of Genoa (UniGe), Italy](https://unige.it/en) with a strong foundation in AI, Robotics, ML, RL, DL, CV, HTML, CSS, JavaScript, & Flutter (Dart). I'm eager to contribute to challenging projects and collaborate with talented teams. I'm particularly interested in Software Development. I'm always learning and exploring new technologies to stay up-to-date with the latest trends in the industry.
+I'm recent graduate in [M.Sc Robotics Engineering](https://corsi.unige.it/corsi/10635) from [University of Genoa (UniGe), Italy](https://unige.it/en) with a strong foundation in AI, Robotics, ML, RL, DL, CV, HTML, CSS, JavaScript, ReactJS, Spring Boot, & Flutter (Dart). I'm eager to contribute to challenging projects and collaborate with talented teams. I'm particularly interested in Software Development. I'm always learning and exploring new technologies to stay up-to-date with the latest trends in the industry.
 
 ## 🚀 Live Demo of Portfolio
 Check out the live version of this website: [Click here to visit Website](https://ankurkohli007.github.io/PORTFOLIO-ANKUR-on-HTML-CSS-and-JavaScript/)
