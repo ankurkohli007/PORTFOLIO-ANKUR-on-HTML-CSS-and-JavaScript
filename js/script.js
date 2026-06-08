@@ -299,7 +299,8 @@ window.setLang = function (lang) {
     "./images/gifs/6.gif",
     "./images/gifs/7.gif",
     "./images/gifs/8.gif",
-    "./images/gifs/9.gif"
+    "./images/gifs/9.gif",
+    "./images/gifs/10.gif"
   ];
 
   let currentIndex = 0;
