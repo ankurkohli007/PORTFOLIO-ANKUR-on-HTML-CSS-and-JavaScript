@@ -635,6 +635,7 @@ body.light-mode .timeline-card:hover { box-shadow: 0 8px 35px rgba(0,0,0,0.08); 
   content: ''; position: absolute; inset: 0;
   background: radial-gradient(circle at top right, var(--red-dim), transparent 60%);
   opacity: 0; transition: opacity 0.4s;
+  pointer-events: none;
 }
 .cert-card:hover {
   border-color: var(--border-hover); transform: translateY(-6px);
