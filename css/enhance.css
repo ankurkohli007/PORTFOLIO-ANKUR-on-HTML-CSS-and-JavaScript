@@ -1,0 +1,402 @@
+/* ── 0. PAGE LOAD REVEAL (prevents flash-of-unstyled-content jank) ── */
+html.enh-loading body { opacity: 0; }
+body {
+  opacity: 1;
+  transition: opacity 0.6s ease;
+}
+
+#enh-loader {
+  position: fixed; inset: 0; z-index: 100000;
+  background: var(--bg-deep);
+  display: flex; align-items: center; justify-content: center;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+#enh-loader.enh-hide { opacity: 0; visibility: hidden; pointer-events: none; }
+#enh-loader .enh-loader-mark {
+  font-family: var(--font-display);
+  font-size: 2.4rem; font-weight: 700; letter-spacing: -1px;
+  color: var(--red);
+  position: relative;
+  animation: enh-pulse 1.4s ease-in-out infinite;
+}
+@keyframes enh-pulse {
+  0%, 100% { opacity: 0.35; transform: scale(0.96); }
+  50%       { opacity: 1;    transform: scale(1); }
+}
+
+/* ── 1. HERO NAME — subtle shimmering gradient sweep on the accent line ── */
+.name-line.accent {
+  background: linear-gradient(100deg, var(--red) 30%, #ff9d8f 45%, var(--red) 60%);
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: enh-shine 5s ease-in-out infinite;
+}
+@keyframes enh-shine {
+  0%, 100% { background-position: 0% center; }
+  50%       { background-position: 100% center; }
+}
+
+/* Fade + rise in hero elements on load, staggered */
+.hero-eyebrow, .hero-name, .hero-role, .hero-desc, .hero-actions, .hero-socials {
+  animation: enh-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.hero-eyebrow { animation-delay: 0.05s; }
+.hero-name    { animation-delay: 0.15s; }
+.hero-role    { animation-delay: 0.30s; }
+.hero-desc    { animation-delay: 0.42s; }
+.hero-actions { animation-delay: 0.54s; }
+.hero-socials { animation-delay: 0.64s; }
+@keyframes enh-rise {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── 2. MAGNETIC HIRE BUTTON ── */
+.btn-hire {
+  position: relative;
+  overflow: hidden;
+  will-change: transform;
+}
+.btn-hire::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.35), transparent);
+  transform: translateX(-120%) skewX(-15deg);
+  transition: transform 0.7s ease;
+}
+.btn-hire:hover::before { transform: translateX(120%) skewX(-15deg); }
+
+/* ── 3. SCROLL-REVEAL (works alongside AOS; used for elements without data-aos) ── */
+.enh-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.enh-reveal.enh-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── 4. CARD TILT + GLOW FOLLOW (project / cert / skill cards) ── */
+.project-card, .cert-card, .skill-category, .timeline-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.enh-tilt-glow {
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle 180px at var(--mx, 50%) var(--my, 50%), var(--red-dim), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+.project-card:hover .enh-tilt-glow,
+.cert-card:hover .enh-tilt-glow,
+.skill-category:hover .enh-tilt-glow {
+  opacity: 1;
+}
+.project-card > *, .cert-card > *, .skill-category > * { position: relative; z-index: 1; }
+
+/* ── 5. CERT CARD SHINE SWEEP ── */
+.cert-card { position: relative; }
+.cert-card::after {
+  content: '';
+  position: absolute; top: 0; left: -60%;
+  width: 40%; height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,0.06), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.9s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+.cert-card:hover::after { left: 130%; }
+
+/* ── 6. TIMELINE PROGRESS LINE — animates as you scroll through experience ── */
+.timeline { position: relative; }
+.timeline::before {
+  background: var(--border) !important;
+}
+.timeline-progress {
+  position: absolute; left: 20px; top: 0;
+  width: 1px; height: 0%;
+  background: linear-gradient(to bottom, var(--red), #ff8a80);
+  box-shadow: 0 0 10px var(--red-glow);
+  transition: height 0.15s linear;
+  z-index: 1;
+}
+.timeline-dot { z-index: 2; }
+
+/* ── 7. SKILL CHIP ENTRANCE STAGGER ── */
+.skill-chips .chip {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: enh-chip-in 0.5s ease forwards;
+}
+.skill-chips.enh-in .chip { animation-play-state: running; }
+@keyframes enh-chip-in {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── 8. GAUGE HOVER LIFT + GLOW RING PULSE ── */
+.gauge svg circle[id^="circle"] {
+  filter: drop-shadow(0 0 6px var(--red-glow));
+}
+
+/* ── 9. CONTACT CARD MAGNETIC HOVER ── */
+.contact-card {
+  will-change: transform;
+}
+
+/* ── 10. BACK TO TOP BUTTON ── */
+#enh-top-btn {
+  position: fixed;
+  bottom: 2rem; left: 2rem;
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--red);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  z-index: 8999;
+  opacity: 0; visibility: hidden; transform: translateY(12px);
+  transition: var(--transition);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+#enh-top-btn.show { opacity: 1; visibility: visible; transform: translateY(0); }
+#enh-top-btn:hover {
+  background: var(--red); color: #fff; border-color: var(--red);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px var(--red-glow);
+}
+
+/* ── 11. SECTION TAG — animated dash draw-in ── */
+.eyebrow-line, .section-tag::before { transform-origin: left; }
+.section-tag {
+  position: relative;
+  padding-left: 0;
+}
+
+/* ── 12. NAV LINK MAGNETIC UNDERLINE GLOW ── */
+.nav-link.nav-active {
+  text-shadow: 0 0 14px var(--red-glow);
+}
+
+/* ── 13. FEATURED PROJECT CARD — animated border gradient ── */
+.project-card.featured {
+  position: relative;
+}
+.project-card.featured::before {
+  content: '';
+  position: absolute; inset: -1px;
+  border-radius: var(--radius);
+  padding: 1px;
+  background: linear-gradient(120deg, var(--red), transparent 40%, transparent 60%, var(--red));
+  background-size: 250% 250%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: enh-border-flow 6s linear infinite;
+  pointer-events: none;
+}
+@keyframes enh-border-flow {
+  0%   { background-position: 0% 0%; }
+  100% { background-position: 200% 200%; }
+}
+
+/* ── 14. HERO PORTRAIT — glow intensifies subtly on hover ── */
+.hero-image-wrapper:hover .hero-portrait {
+  filter: drop-shadow(0 24px 55px rgba(255,85,85,0.4));
+}
+
+/* ── 15. SMOOTH IMAGE LAZY FADE-IN ── */
+img { transition: opacity 0.5s ease; }
+img[loading="lazy"]:not(.enh-loaded) { opacity: 0; }
+img.enh-loaded { opacity: 1; }
+
+/* ── 16. FOCUS STATES for accessibility (recruiters do check this) ── */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ── 17. REDUCED MOTION RESPECT ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── 18. MOBILE: disable heavy hover-dependent effects gracefully ── */
+@media (hover: none) and (pointer: coarse) {
+  .enh-tilt-glow { display: none; }
+  .project-card.featured::before { animation: none; opacity: 0.5; }
+}
+
+/* ══════════════════════════════════════════════════════════
+   ELEGANCE PASS v2 — refined motion, no content/theme changes
+   ══════════════════════════════════════════════════════════ */
+
+/* ── 19. AMBIENT BACKGROUND MESH — slow drifting glow, whole page ── */
+#enh-mesh {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.55;
+  overflow: hidden;
+}
+#enh-mesh span {
+  position: absolute;
+  width: 42vw; height: 42vw;
+  border-radius: 50%;
+  filter: blur(90px);
+  background: radial-gradient(circle, var(--red-glow), transparent 70%);
+  animation: enh-drift 22s ease-in-out infinite;
+}
+#enh-mesh span:nth-child(1) { top: -10%; left: -8%; animation-delay: 0s; }
+#enh-mesh span:nth-child(2) { bottom: -14%; right: -10%; animation-duration: 26s; animation-delay: -8s; }
+#enh-mesh span:nth-child(3) { top: 40%; left: 60%; width: 30vw; height: 30vw; animation-duration: 30s; animation-delay: -15s; opacity: 0.6; }
+@keyframes enh-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%      { transform: translate(4%, 6%) scale(1.08); }
+  66%      { transform: translate(-5%, -3%) scale(0.94); }
+}
+body.light-mode #enh-mesh { opacity: 0.28; }
+
+/* ── 20. REFINED EASING for existing card hovers (smoother, less snappy) ── */
+.project-card, .cert-card, .skill-category, .timeline-card, .contact-card, .chip, .social-pill {
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.4s ease, background 0.4s ease;
+}
+
+/* ── 21. SECTION TITLE — elegant char-reveal underline sweep ── */
+.section-title {
+  position: relative;
+  display: inline-block;
+}
+.section-title.centered { display: block; }
+.section-title::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -10px;
+  width: 46px; height: 2px;
+  background: linear-gradient(90deg, var(--red), transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.section-title.centered::after { left: 50%; transform: translateX(-50%) scaleX(0); }
+.enh-title-in.section-title::after { transform: scaleX(1); }
+.enh-title-in.section-title.centered::after { transform: translateX(-50%) scaleX(1); }
+
+/* ── 22. SOFTER, SLOWER PORTRAIT FLOAT + BREATHING RING ── */
+.hero-image-ring {
+  animation-duration: 6s !important;
+  animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1) !important;
+}
+.hero-portrait, .career-img-wrap img, .publications-img img {
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), filter 0.6s ease;
+}
+
+/* ── 23. ELEGANT LINK UNDERLINE for project/cert links (liquid fill) ── */
+.project-link, .cert-link {
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+}
+.project-link::before, .cert-link::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: var(--red);
+  transform: translateX(-101%);
+  transition: transform 0.45s cubic-bezier(0.65, 0, 0.35, 1);
+  z-index: -1;
+  border-radius: inherit;
+}
+.project-link:hover::before, .cert-link:hover::before { transform: translateX(0); }
+.project-link:hover, .cert-link:hover { color: #fff; border-color: var(--red); }
+
+/* ── 24. TYPEWRITER CARET — softer glow pulse instead of hard blink ── */
+#typewriter {
+  border-right-width: 2px;
+  animation: enh-caret-glow 1.1s ease-in-out infinite;
+}
+@keyframes enh-caret-glow {
+  0%, 100% { border-color: var(--red); box-shadow: 0 0 0 rgba(255,85,85,0); }
+  50%       { border-color: transparent; }
+}
+
+/* ── 25. SKILL BAR FILL — refined shimmer, slower & subtler ── */
+.skill-bar::after { animation-duration: 3.4s; opacity: 0.7; }
+
+/* ── 26. FEATURED SKILL CARD — gentle breathing glow at rest ── */
+.skill-category.featured-skill .skill-category-glow {
+  opacity: 0.35;
+  animation: enh-breathe 5s ease-in-out infinite;
+}
+.skill-category.featured-skill:hover .skill-category-glow { opacity: 1; animation: none; }
+@keyframes enh-breathe {
+  0%, 100% { opacity: 0.2; }
+  50%       { opacity: 0.4; }
+}
+
+/* ── 27. CHIP HOVER — refined lift with slight scale ── */
+.chip:hover { transform: translateY(-3px) scale(1.045); }
+
+/* ── 28. CONTACT ICON — micro rotation settle instead of instant swap ── */
+.contact-card-icon, .cert-icon, .skill-icon-box {
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.4s ease, color 0.4s ease;
+}
+
+/* ── 29. SCROLL PROGRESS BAR — glassy edge highlight ── */
+#scroll-progress {
+  box-shadow: 0 0 14px var(--red-glow), 0 0 2px rgba(255,255,255,0.4);
+}
+
+/* ── 30. REFINED CURSOR RING — smoother scale spring ── */
+#cursor-ring {
+  transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+              height 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+              border-color 0.3s ease, background 0.3s ease;
+}
+
+/* ── 31. TIMELINE CARD — refined entrance shadow bloom on hover ── */
+.timeline-card:hover {
+  box-shadow: 0 14px 45px rgba(255,85,85,0.08), 0 8px 35px rgba(0,0,0,0.25);
+}
+
+/* ── 32. LOGO — subtle glow pulse on hover ── */
+.header-logo:hover .logo-text {
+  text-shadow: 0 0 18px var(--red-glow);
+  transition: text-shadow 0.4s ease;
+}
+
+/* ── 33. PUBLICATIONS GAUGE LABELS — gentle color deepen on hover already exists via <a>, add underline grow ── */
+.gauge a {
+  position: relative;
+}
+.gauge a::after {
+  content: '';
+  position: absolute; left: 0; right: 0; bottom: -3px;
+  height: 1px; background: currentColor;
+  transform: scaleX(0); transform-origin: center;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.gauge:hover a::after { transform: scaleX(1); }
+
+/* ── 34. REDUCED MOTION — ambient mesh off ── */
+@media (prefers-reduced-motion: reduce) {
+  #enh-mesh span { animation: none; }
+}
+@media (max-width: 640px) {
+  #enh-mesh { display: none; }
+}
