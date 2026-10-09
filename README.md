@@ -1,10 +1,19 @@
-# ANKUR KOHLI - PORFOLIO
+# ANKUR KOHLI - PORTFOLIO
 
-Welcome to my portfolio! This repository showcases my skills, projects, and experience in **Artificial Intelligence, GenAI, Machine Learning, Reinforcement Learning, Deep Learning, Robotics, Computer Visio, Frontend Developement, Backend Development, & Full-Stack Development**. I'm a Aspiring Software Engineer passionate about **AI, ML, RL, DL, Robotics, CV, Frontend Development**.
+Welcome to my portfolio! This repository showcases my skills, projects, and experience in **Artificial Intelligence, GenAI/LLM Engineering, Machine Learning, Reinforcement Learning, Deep Learning, Robotics, Computer Vision, Frontend Development, Backend Development, & Full-Stack Development**. I'm a Software Engineer passionate about **AI, GenAI, ML, RL, DL, Robotics, CV, Full-Stack Development**.
 
 ## About Me
 
-I'm recent graduate in [M.Sc Robotics Engineering](https://corsi.unige.it/corsi/10635) from [University of Genoa (UniGe), Italy](https://unige.it/en) with a strong foundation in AI, Robotics, ML, RL, DL, CV, HTML, CSS, JavaScript, ReactJS, Spring Boot, & Flutter (Dart). I'm eager to contribute to challenging projects and collaborate with talented teams. I'm particularly interested in Software Development. I'm always learning and exploring new technologies to stay up-to-date with the latest trends in the industry.
+Software Engineer experienced in designing and developing scalable software systems across frontend and backend environments for the Italian MediaTech industry, Japanese clients, and other international engagements. Experience spans backend services, API driven and real time applications, distributed systems, and the integration of AI and LLM capabilities into software products. Contribute across system design, implementation, integration, testing, deployment, and optimization, with an emphasis on performance, maintainability, and sound software architecture.
+
+**Current Role:** Freelance Software Engineer & Consultant at GINI Technologies (US, Remote) — Dec 2025 - Present  
+**Previous:** Software Engineer at NTT Data Italia (Italy) — Apr 2025 - Oct 2025  
+**Thesis Project:** Software Engineering Thesis at NTT Data Italia — Jun 2023 - Feb 2024 (ROS2-based autonomous robotics)
+
+**Education:** M.Sc. Computer Engineering (Specialization: Robotics Engineering) — University of Genoa, Italy (Sep 2021 - Mar 2024)  
+B.Tech Mechatronics Engineering — University of Petroleum & Energy Studies, India (Jul 2016 - Jun 2020)
+
+**Technical Expertise:** Python, C/C++, Java, JavaScript, Dart, ReactJS, Flutter, Spring Boot, REST APIs, WebSocket, SQL/MySQL, Docker, Git/GitLab CI/CD, ROS2, NAV2, SLAM, GenAI/LLM, RAG, LlamaIndex, Model Context Protocol (MCP), Gemini/OpenAI APIs, Tailwind CSS, HTML5/CSS3
 
 ## 🚀 Live Demo of Portfolio
 Check out the live version of this website: [Click here to visit Website](https://ankurkohli007.github.io/PORTFOLIO-ANKUR-on-HTML-CSS-and-JavaScript/)
